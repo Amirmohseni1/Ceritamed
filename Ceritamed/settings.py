@@ -25,7 +25,7 @@ SECURE_SSL_REDIRECT = False
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ceritamed.com', 'www.ceritamed.com']
+ALLOWED_HOSTS = []
 
 # Application definition
 
