@@ -1,0 +1,66 @@
+{% extends "Share/_Ceritamed_BaseHTML.html" %}
+{% load static %}
+
+{% block title %}| الأطباء{% endblock %}
+
+{% block content %}
+
+    <!-- Start Doctor Area -->
+    <section class="doctor-area ptb-100">
+        <div class="container">
+            <div class="section-title">
+                <span>الأطباء</span>
+                <h2>أطباء ذات خبرة في سريتامد</h2>
+                <p>يتم إختيار الأطباء في سريتامد من أفضل و أحسن الأطباء في إيران و يبقون بجانبكم إلى آخر لحظات
+                    العلاج.</p>
+            </div>
+            <div class="row">
+                {% for doctors in page_obj %}
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-doctor-box py-5">
+                            <div class="doctor-image">
+                                <img src="{{ doctors.img_thumbnail_medium.url }}" alt="image">
+
+                                <a href="{{ doctors.get_absolute_url }}" class="details-btn"><i
+                                        class="fas fa-plus"></i></a>
+                            </div>
+
+                            <div class="doctor-content">
+                                <h3><a href="{{ doctors.get_absolute_url }}">دکتر {{ doctors.doctor_name }}</a></h3>
+                                <span>{{ doctors.doctor_evidence }} {{ doctors.doctor_expertise }} </span>
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="col-lg-12 col-md-12">
+                    <div class="pagination-area">
+
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}" class="prev page-numbers"><i
+                                    class="fas fa-angle-double-right"></i></a>
+                        {% endif %}
+
+                        {% for page in paginator.page_range %}
+                            {% if page == page_obj.number %}
+                                <a href="?page={{ page }}" class="page-numbers current">{{ page }}</a>
+                            {% else %}
+                                <a href="?page={{ page }}" class="page-numbers">{{ page }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}" class="next page-numbers">
+                                <i class="fas fa-angle-double-left"></i></a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shape3"><img src="{% static 'img/shape/3.png' %}" class="wow fadeInRight" alt="image"></div>
+    </section>
+    <!-- End Doctor Area -->
+
+{% endblock %}

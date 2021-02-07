@@ -1,0 +1,9 @@
+<section class="widget widget_tag_cloud">
+    <h3 class="widget-title">تسميات</h3>
+
+    <div class="tagcloud">
+        {% for post in blog_ditail.tags.all %}
+            <a href="#">{{ post }} </a>
+        {% endfor %}
+    </div>
+</section>

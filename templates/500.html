@@ -1,0 +1,24 @@
+{% extends 'Share/_Ceritamed_BaseHTML.html' %}
+{% load static %}
+
+{% block content %}
+
+        <!-- Start Error Area -->
+		<section class="error-area">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="error-content">
+                            <img src="{% static 'img/404.png' %}" alt="error">
+        
+                            <h3>صفحه یافت نشد</h3>
+                            <p>ممکن است صفحه مورد نظر حذف شده باشد یا نام آن تغییر کرده یا موقتاً در دسترس نباشد.</p>
+        
+                            <a href="{% url 'Home' %}" class="btn btn-primary">بازگشت به صفحه اصلی <i class="flaticon-left-chevron"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		<!-- End Error Area -->
+{% endblock %}

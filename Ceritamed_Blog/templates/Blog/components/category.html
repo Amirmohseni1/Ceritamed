@@ -1,0 +1,9 @@
+<section class="widget widget_categories">
+    <h3 class="widget-title">التصنيفات</h3>
+    <ul>
+        <li><a href="{% url "blog_list" %}">جميع المدونات</a></li>
+        {% for category in categories %}
+            <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></li>
+        {% endfor %}
+    </ul>
+</section>

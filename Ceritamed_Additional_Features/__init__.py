@@ -1,0 +1,1 @@
+default_app_config = 'Ceritamed_Additional_Features.apps.CeritamedAdditionalFeaturesConfig'

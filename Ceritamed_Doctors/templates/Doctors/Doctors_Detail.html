@@ -1,0 +1,150 @@
+{% extends "Share/_Ceritamed_BaseHTML.html" %}
+{% load static %}
+
+{% block title %} | دکتر {{ doctors.doctor_name }}{% endblock %}
+
+{% block content %}
+
+    <!-- Start Doctor Details Area -->
+    <section class="doctor-details-area ptb-100">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 col-md-12">
+                    <div class="doctor-details-image">
+                        <img src="{{ doctors.img_thumbnail_big.url }}" alt="{{ doctors.doctor_name }}">
+
+                        <h3>دکتر {{ doctors.doctor_name }} </h3>
+                        <span>{{ doctors.doctor_evidence }} {{ doctors.doctor_expertise }}</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 col-md-12">
+                    <div class="doctor-details-desc">
+                        <h2>با سلام من دکتر {{ doctors.doctor_name }} هستم</h2>
+
+                        <p>{{ doctors.about_doctor | linebreaksbr }}</p>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-education-desc">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="skill-desc">
+                            <span class="sub-title">مهارت های من</span>
+                            <h2>توضیحاتی درباره خودم</h2>
+                            <p>{{ doctors.doctor_skill_description }}</p>
+
+                            {% for skils in doctors.tags.all %}
+
+                                <ul>
+                                    <li><span><i class="flaticon-check-mark"></i> {{ skils }}</span></li>
+                                </ul>
+
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-12">
+                        <div class="education-desc">
+                            <span class="sub-title">تحصیلات من</span>
+                            <h2>{{ doctors.doctor_experience_years }} سال تجربه</h2>
+                            <p>{{ doctors.doctor_education_description | linebreaksbr }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="shape3"><img src="{% static 'img/shape/3.png' %}" class="wow fadeInRight" alt="image"></div>
+    </section>
+    <!-- End Doctor Details Area -->
+
+    <!-- Start Appointment Area -->
+    <section class="appointment-area ptb-100 jarallax" data-jarallax='{"speed": 0.3}'>
+        <div class="container">
+            <div class="appointment-content">
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if "form" in message.tags %}
+                            <div class="alert alert-success mt-3">
+                                <p> {{ message }} </p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <span class="sub-title">راهنمایی می کنید؟</span>
+                <h2>قرار ملاقات بگذارید</h2>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <div class="icon">
+                                    <i class="flaticon-user"></i>
+                                </div>
+                                <label>نام شما</label>
+                                {{ doctor_forms.full_name }}
+                                <div class="help-block with-errors ">{% for errors in doctor_forms.full_name.errors %}
+                                    <p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}</div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group">
+                                <div class="icon">
+                                    <i class="flaticon-envelope"></i>
+                                </div>
+                                <label>ایمیل شما</label>
+                                {{ doctor_forms.email }}
+                                <div class="help-block with-errors">{% for errors in doctor_forms.email.errors %}
+                                    <p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}</div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-12 col-md-12 ">
+                            <div class="form-group">
+                                <div class="icon">
+                                    <i class="flaticon-phone-call"></i>
+                                </div>
+                                <div class="d-flex ">
+                                    <div class="w-100 ">
+                                        <label>شماره شما</label>
+                                        <div class="d-flex pohone_form">
+                                            {{ doctor_forms.phone }}
+                                        </div>
+                                        <div class="help-block with-errors">{% for errors in doctor_forms.phone.errors %}
+                                            <p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="px-3 w-100">
+                            <div class="form-group ">
+                                <div class="icon"><i class="flaticon-envelope"></i></div>
+                                <label>پیام شما</label>
+                                {{ doctor_forms.text }}
+                                <div class="help-block with-errors">{% for errors in doctor_forms.text.errors %}
+                                    <p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}</div>
+                            </div>
+                        </div>
+                        <input name="where" value="https://ceritamed.com{{ request.get_full_path }}" type="hidden">
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="submit-btn">
+                                <button class="btn btn-primary">ارسال <i class="flaticon-left-chevron"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </section>
+    <!-- End Appointment Area -->
+{% endblock %}

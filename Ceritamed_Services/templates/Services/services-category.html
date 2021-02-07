@@ -1,0 +1,42 @@
+{% extends 'Share/_Ceritamed_BaseHTML.html' %}
+{% load static %}
+
+{% block title %} | العلاج فی ایران من العراق | افضل المستشفیات فی ایران {% endblock %}
+
+{% block content %}
+    <section class="page-title-area page-title-bg4">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-title-content">
+                        <h2>الصفحة الأصلية</h2>
+                        <ul>
+                            <li><a href="{% url 'Home' %}">الصفحة الأصلية</a></li>
+                            <li>الخدمات</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="services-area ptb-100 bg-f4f9fd">
+        <div class="container">
+            <div class="row">
+                {% for service in object_list %}
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-services-box bg-1"
+                             style="background-image: url({{ service.img_thumbnail.url }})">
+                            <div class="icon">
+                                <img class="w-50 pt-1" src="{{ service.png_img.url }}">
+                            </div>
+                            <h3><a href="{{ service.get_absolute_url }}">{{ service.title }}</a></h3>
+                            <p>{{ service.descriptions }}</p>
+                            <a href="{{ service.get_absolute_url }}" class="read-more-btn"> للمزيد من المعلومات <i
+                                    class="fas fa-arrow-left"></i></a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

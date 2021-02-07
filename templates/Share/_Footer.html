@@ -1,0 +1,103 @@
+{% load static %}
+
+<!-- Start Footer Area -->
+<section class="footer-area">
+    <div class="container">
+        <div class="subscribe-area">
+            <div class="row align-items-center">
+                <div class="col-lg-6 col-md-12">
+                    <div class="newsletter-content">
+                        <h2>إشتركوا في النشرات الإخبارية الخاصة بنا</h2>
+                        <p>إشتركوا في النشرات الإخبارية الخاصة بنا لتكونوا مطلعين على جميع التخفيضات و الخدمات الجديدة
+                            في سريتامد</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <form class="newsletter-form" data-toggle="validator" method="post">
+                        {% csrf_token %}
+                        {{ Forms.email }}
+                        <div class="help-block with-errors">{% for errors in Forms.email.errors %}
+                            <p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}</div>
+
+                        <button type="submit">الإشتراك<i class="fas fa-paper-plane"></i></button>
+                        <div id="validator-newsletter" class="form-result"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-footer-widget">
+                    <div class="logo">
+                        <a href="#"><img src="{% static 'img/white-logo.png' %}" alt="image"></a>
+                        <p class="text-justify">سريتامد هي من الشركات الرائدة في إيران والمختصصة في مجال السياحة
+                            العلاجية، من خلال تقديم كافة الخدمات للسياح الأجانب بأفضل الأسعار وجودة عالية.</p>
+                    </div>
+
+                    <ul class="social">
+                        <li><a rel="noreferrer" href="https://www.facebook.com/ceritamed.arb" target="_blank"><i
+                                class="fab fa-facebook-f pt-2"></i></a></li>
+                        <li><a rel="noreferrer" href="https://wa.me/+989377974625"
+                               target="_blank"><i class="fab fa-whatsapp pt-2"></i></a></li>
+                        <li><a rel="noreferrer" target="_blank" href="https://twitter.com/ceritamedar"><i
+                                class="fab fa-twitter pt-2"></i></a></li>
+                        <li><a rel="noreferrer" href="https://www.instagram.com/ceritamed.arb" target="_blank"><i
+                                class="fab fa-instagram pt-2"></i></a></li>
+                        <li><a rel="noreferrer" href="https://www.linkedin.com/company/ceritamed" target="_blank"><i
+                                class="fab fa-linkedin pt-2"></i></a></li>
+                        <li><a rel="noreferrer" href="https://www.youtube.com/channel/UCFTvt9iZODx6rpGZv9DM2cQ" target="_blank"><i
+                                class="fab fa-youtube pt-2"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-footer-widget pl-5">
+                    <h3>أحدث المدونات</h3>
+
+                    <ul class="departments-list">
+
+                        {% for title in blog %}
+                            <li><a href="{{ title.get_absolute_url }}">{{ title.h1 }}</a></li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-footer-widget pl-5">
+                    <h3>الخدمات</h3>
+
+                    <ul class="links-list">
+                        {% for title in Servise %}
+                            <li><a href="{{ title.get_absolute_url }}">{{ title.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="single-footer-widget pl-5">
+                    <h3>تقسيم الخدمات</h3>
+
+                    <ul class="links-list">
+                        {% for title in ServiseCategory %}
+                            <li><a href="{{ title.get_absolute_url }}">{{ title.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright-area">
+            <p>حقوق النشر ۱۳۹۹<i class="far fa-copyright"></i>جمیع حقوق الحزمة محفوظة-تم التصمیم والتطویر بواسطة فریق
+                سریتامد
+            </p>
+        </div>
+    </div>
+</section>
+<!-- End Footer Area -->
+
+<div class="go-top"><i class="fas fa-chevron-up"></i></div>

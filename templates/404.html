@@ -1,0 +1,24 @@
+{% extends 'Share/_Ceritamed_BaseHTML.html' %}
+{% load static %}
+
+{% block content %}
+
+        <!-- Start Error Area -->
+		<section class="error-area">
+            <div class="d-table">
+                <div class="d-table-cell">
+                    <div class="container">
+                        <div class="error-content">
+                            <img src="{% static 'img/404.png' %}" alt="error">
+        
+                            <h3>لم یتم العثور علی الصفحة</h3>
+                            <p>الصفحة المطلوبة يمكن أن تكون محذوفة ، خارجة عن النطاق بشكل مؤقت أو قد تم تغیير إسمها.</p>
+        
+                            <a href="{% url 'Home' %}" class="btn btn-primary">العودة إلى الصفحة الرئيسية<i class="flaticon-left-chevron"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+		<!-- End Error Area -->
+{% endblock %}
