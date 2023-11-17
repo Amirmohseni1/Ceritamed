@@ -179,12 +179,9 @@ if DEBUG:
 # statics conf
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "assets")
-]
-STATIC_ROOT = os.path.join(BASE_DIR, "static", "static_root")
-MEDIA_URL = '/media_root/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media_root")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
 ##django compressor conf

@@ -6,20 +6,21 @@ services:
     container_name: 'app-ceritamed'
     restart: 'always'
     command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
-    # command: python manage.py runserver 0.0.0.0:8001
     expose:
       - 8000
-   environment:
-     - SECRET_KEY=django-insecure-f%12(rqpha3k2m4$jqtnbslzttg-h0jn(*jj=h#_#v+%mz(c7w
-     - SETTING=conf.settings.development
-     - SQL_ENGINE=django.db.backends.postgresql
-     - SQL_DATABASE=Webra
-     - SQL_USER=Webra
-     - SQL_PASSWORD=Amir@1995
-     - SQL_HOST=db
-     - SQL_PORT=5432
+  #  environment:
+  #    - SECRET_KEY=django-insecure-f%12(rqpha3k2m4$jqtnbslzttg-h0jn(*jj=h#_#v+%mz(c7w
+  #    - SETTING=conf.settings.development
+  #    - SQL_ENGINE=django.db.backends.postgresql
+  #    - SQL_DATABASE=Webra
+  #    - SQL_USER=Webra
+  #    - SQL_PASSWORD=Amir@1995
+  #    - SQL_HOST=db
+  #    - SQL_PORT=5432
     volumes:
       - ./volumes/core:/app
+      - ./volumes/static:/app/static
+      - ./volumes/media:/app/media
     depends_on:
       - db
       - nginx
@@ -37,6 +38,9 @@ services:
 
   nginx:
     build: ./nginx
+    volumes:
+      - ./volumes/static:/app/static
+      - ./volumes/media:/app/media
     ports:
       - 80:80
 
