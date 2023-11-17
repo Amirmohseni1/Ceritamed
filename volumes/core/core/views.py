@@ -1,12 +1,9 @@
 from django.shortcuts import render
-from doctors.models import Doctor
-from newsletters.forms import NewsLettersForm
-from newsletters.models import Newsletters
-from services.models import Service, ServiceCategory
-from additional_features.models import Slider, Partners, Customers, HomeData
-from blog.models import Post
-from django.contrib import messages
-from django.db import connection
+from apps.doctors.models import Doctor
+
+from apps.services.models import Service, ServiceCategory
+from apps.additional_features.models import Slider, Partners, Customers, HomeData
+
 
 
 # -------------------------------------

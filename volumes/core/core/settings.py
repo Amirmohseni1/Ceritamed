@@ -27,16 +27,16 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.sites',
     # insternal apps
-    'about_us',
-    'contact',
-    'blog',
-    'services',
-    'doctors',
-    'additional_features',
-    'forms',
-    'newsletters',
-    'accounts',
-    'custom_template_tags',
+    'apps.about_us',
+    'apps.contact',
+    'apps.blog',
+    'apps.services',
+    'apps.doctors',
+    'apps.additional_features',
+    'apps.forms',
+    'apps.newsletters',
+    'apps.accounts',
+    'apps.custom_template_tags',
     # external apps
     'django_render_partial',
     'imagekit',
@@ -46,9 +46,6 @@ INSTALLED_APPS = [
     'phone_field',
     'crispy_forms',
     'phonenumber_field',
-    'compressor',
-    "cssmin",
-    "jsmin",
 ]
 
 SITE_ID = 1
@@ -179,26 +176,9 @@ if DEBUG:
 # statics conf
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = os.path.join(BASE_DIR.parent, "static")
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-
-
-##django compressor conf
-COMPRESS_ENABLED = True
-COMPRESS_ROOT = STATIC_ROOT
-COMPRESS_OFFLINE = True
-
-if not COMPRESS_ENABLED:
-    COMPRESS_ENABLED = True
-    COMPRESS_CSS_FILTERS = ["compressor.filters.cssmin.CSSMinFilter"]
-    COMPRESS_JS_FILTERS = ["compressor.filters.jsmin.JSMinFilter"]
-    
-STATICFILES_FINDERS = (
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
-)
+MEDIA_ROOT = os.path.join(BASE_DIR.parent, "media")
     
 # crispy pack conf
 CRISPY_TEMPLATE_PACK = "bootstrap4"

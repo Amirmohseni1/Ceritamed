@@ -19,8 +19,8 @@ services:
   #    - SQL_PORT=5432
     volumes:
       - ./volumes/core:/app
-      - ./volumes/static:/app/static
-      - ./volumes/media:/app/media
+      - ./volumes/static:/static
+      - ./volumes/media:/media
     depends_on:
       - db
       - nginx
@@ -39,8 +39,8 @@ services:
   nginx:
     build: ./nginx
     volumes:
-      - ./volumes/static:/app/static
-      - ./volumes/media:/app/media
+      - ./volumes/static:/static
+      - ./volumes/media:/media
     ports:
       - 80:80
 
