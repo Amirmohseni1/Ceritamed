@@ -1,7 +1,5 @@
 {% load static %}
-{% load compress %}
 
-{% compress js file base_js %}
     <!-- jQuery Min JS -->
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <!-- Popper Min JS -->
@@ -34,8 +32,6 @@
     <script src="{% static 'js/notifications.js' %}"></script>
     <!-- Main JS -->
     <script src="{% static 'js/custom.js' %}"></script>
-
-{% endcompress %}
 
 
 {% if messages %}
