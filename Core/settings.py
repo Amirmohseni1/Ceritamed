@@ -57,7 +57,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'phonenumber_field',
     'compressor',
-
+    "cssmin",
+    "jsmin",
     #     sitemap
     'django.contrib.sitemaps',
     'django.contrib.sites',
@@ -120,21 +121,23 @@ WSGI_APPLICATION = 'Core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'ceritame_db',
-#         'USER': 'ceritame_user',
-#         'PASSWORD': 'medical3533ceritamed',
-#         'HOST': '127.0.0.1',
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ceritamed',
+        'USER': 'ceritamed',
+        'PASSWORD': 'Amir@1995',
+        'HOST': 'db',
+        'PORT': '5432',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -234,9 +237,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "static", "media_root")
 
 # MEDIA_ROOT = '/home2/ceritame/public_html/media'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'djangotest4575@gmail.com'
-EMAIL_HOST_PASSWORD = 'zyrfojmslyxswqta'
-EMAIL_PORT = 587
+
+COMPRESS_ENABLED = True
+COMPRESS_ROOT = STATIC_ROOT ##django compressor
+COMPRESS_OFFLINE = True
+
+if not COMPRESS_ENABLED: ##django compressor
+    COMPRESS_ENABLED = True
+    COMPRESS_CSS_FILTERS = ["compressor.filters.cssmin.CSSMinFilter"]
+    COMPRESS_JS_FILTERS = ["compressor.filters.jsmin.JSMinFilter"] ##django compressor

@@ -5,25 +5,9 @@
 <!doctype html>
 <html lang="ar">
 <head>
-    
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-P9WRG6J');</script>
-<!-- End Google Tag Manager -->
-
     {% include 'Share/_HeadLinks.html' %}
-    
-    <meta name="google-site-verification" content="QlauIqyrr47lS0LxtemwX-WdYMELKOuphZ8G0TsUKm8" />
-
-    
-    <meta name="google-site-verification" content="K_286l8Db1YJ2dqx_MMViRXp3AmShHx0X0esNaJqlsM" />
-    
-    
-
-    <!-- Required meta tags -->
+    <meta name="google-site-verification" content="QlauIqyrr47lS0LxtemwX-WdYMELKOuphZ8G0TsUKm8"/>
+    <meta name="google-site-verification" content="K_286l8Db1YJ2dqx_MMViRXp3AmShHx0X0esNaJqlsM"/>
     <meta charset="utf-8">
     <title>Ceritamed {% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -34,64 +18,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta property="og:locale" content="ar_ar">
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
-
     {% block Meta %}{% endblock %}
-
-<script type="application/ld+json">
-{
-  "@context" : "http://schema.org",
-  "@type" : "Organization",
-  "name" : "Ceritamed",
-  "url" : "https://ceritamed.com",
-  "sameAs" : [
-    "https://www.facebook.com/ceritamed.arb",
-    "https://www.linkedin.com/company/ceritamed",
-    "https://www.instagram.com/ceritamed.arb",
-    "https://twitter.com/ceritamedar",
-    "https://www.youtube.com/channel/UCFTvt9iZODx6rpGZv9DM2cQ"
-  ]
-}
-</script>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "url": "https://ceritamed.com/",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://ceritamed.com/blog/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-    
-    
-    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="b4d0da80-d910-45b6-b91f-dfb12ea6decc";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
-
-
 </head>
 
 <body>
-    
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P9WRG6J"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-
 {% header %}
 
 {% block content %}{% endblock %}
 
 {#{% render_partial 'footer' %}#}
+
 {% footer %}
 
 {% include 'Share/_Footer_js.html' %}
 
-<!--{% include 'Share/_social.html' %}-->
-
 {% block custom-js %}{% endblock %}
-
 
 </body>
 </html>

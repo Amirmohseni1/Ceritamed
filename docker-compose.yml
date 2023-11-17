@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    container_name: 'app-ceritamed'
+    restart: 'always'
+    ports:
+      - "8000:8000"
+#    environment:
+#      - SECRET_KEY=django-insecure-f%12(rqpha3k2m4$jqtnbslzttg-h0jn(*jj=h#_#v+%mz(c7w
+#      - SETTING=conf.settings.development
+#      - EMAIL_HOST=mail.webralalezar.com
+#      - EMAIL_PORT=465
+#      - EMAIL_HOST_PASSWORD=Qwer@1213
+#      - EMAIL_HOST_USER=info@webralalezar.com
+#      - EMAIL_USE_TLS=True
+#      - SQL_ENGINE=django.db.backends.postgresql
+#      - SQL_DATABASE=Webra
+#      - SQL_USER=Webra
+#      - SQL_PASSWORD=Amir@1995
+#      - SQL_HOST=db
+#      - SQL_PORT=5432
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+      
+  db:
+    image: postgres:15.4
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=ceritamed
+      - POSTGRES_USER=ceritamed
+      - POSTGRES_PASSWORD=Amir@1995
+
+volumes:
+  postgres_data:
