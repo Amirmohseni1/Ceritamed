@@ -32,7 +32,7 @@ urlpatterns = [
     path('', include("doctors.urls")),
     path('', include("blog.urls")),
     path('ckeditor', include("ckeditor_uploader.urls")),
-    path('django-admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('sitemap.xml', views.index, {'sitemaps': sitemaps}),
     path('sitemap-<section>.xml', views.sitemap, {'sitemaps': sitemaps},
          name='django.contrib.sitemaps.views.sitemap'),
