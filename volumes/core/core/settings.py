@@ -12,7 +12,7 @@ SECURE_SSL_REDIRECT = False
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -64,7 +64,7 @@ MIDDLEWARE = [
     'utils.Middleware.custom_middleware.AdminLocaleMiddleware',
 ]
 
-ROOT_URLCONF = 'Core.urls'
+ROOT_URLCONF = 'core.urls'
 
 
 TEMPLATES = [
@@ -85,7 +85,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Core.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

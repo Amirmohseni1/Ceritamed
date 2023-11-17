@@ -39,8 +39,8 @@ urlpatterns = [
 ]
 
 
-admin.site.site_header = 'Core'
-admin.site.site_title = 'Core'
+admin.site.site_header = 'core'
+admin.site.site_title = 'core'
 
 if settings.DEBUG:
     # debug_toolbar
