@@ -1,25 +1,31 @@
-Babel
-phonenumbers
+# Base frameworks
+Django
 
 # Database apps
 psycopg
 psycopg2-binary
 
-# rcssmin
-
-
-django-render-partial
-Django
+# image & files apps
 Pillow
 django-imagekit
-django-debug-toolbar
-django-taggit
-django-ckeditor
-django-phone-field
-django-crispy-forms==1.9.2
-django-phonenumber-field
+
+#template apps
 django-compressor
 cssmin
 jsmin
-django-bootstrap4
+django-render-partial
+django-crispy-forms==1.9.2
+
+# Model tool apps
+django-phone-field
+django-ckeditor
+django-taggit
+django-phonenumber-field
+Babel
+phonenumbers
+
+# Other Apps
+python-decouple
+gunicorn
+django-debug-toolbar
 
