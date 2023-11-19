@@ -3,7 +3,6 @@ from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
-from taggit.managers import TaggableManager
 from django.utils import timezone
 
 
@@ -90,7 +89,6 @@ class Service(models.Model):
     png_img = models.FileField(upload_to=upload_image_path_servise_icons, null=True, verbose_name='ایکون')
     slug = models.SlugField(unique=True, null=True, verbose_name='URL خدمت')
     price = models.IntegerField(verbose_name='قیمت خدمت', default=0, null=True, blank=True)
-    tags = TaggableManager(verbose_name="تگ ها و کلمات کلیدی")
     description = models.TextField(max_length=200, null=True, verbose_name='متا دیسکریپشن')
     descriptions = RichTextUploadingField(verbose_name="محتوا", null=True,
                                           external_plugin_resources=

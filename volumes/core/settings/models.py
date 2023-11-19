@@ -4,9 +4,6 @@ from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
 
 
-# --------------------------------------------------- Slider img rename --------------------------------------------------------
-
-
 def get_filename_ext(filepath):
     base_name = os.path.basename(filepath)
     name, ext = os.path.splitext(base_name)
@@ -19,19 +16,13 @@ def upload_image_path(instance, filename):
     return f"ُSlider/{final_name}"
 
 
-# --------------------------------------------------- Slider --------------------------------------------------------
-
 class Slider(models.Model):
     title = models.CharField(max_length=65, verbose_name="عنوان")
     category = models.CharField(max_length=65, verbose_name="دسته بندی", null=True)
     img = models.ImageField(upload_to=upload_image_path, null=True, verbose_name="عکس پس زمینه")
-    btn = models.CharField(max_length=50, default='کلیک کنید', help_text='متن پیش فرض ( کلیک کنید ) هستش', blank=True,
-                           null=True)
+    btn = models.CharField(max_length=50, default='کلیک کنید', help_text='متن پیش فرض ( کلیک کنید ) هستش', blank=True, null=True)
     link = models.URLField(max_length=200, verbose_name="لینک", blank=True, null=True)
-    slider_img = ImageSpecField(source='img',
-                                processors=[ResizeToFill(1440, 744)],
-                                format='JPEG',
-                                options={'quality': 80})
+    slider_img = ImageSpecField(source='img', processors=[ResizeToFill(1440, 744)], format='JPEG', options={'quality': 80})
     descriptions = models.TextField(verbose_name="محتوا")
     active = models.BooleanField(default=False, verbose_name='فعال / غیره فعال')
 
@@ -68,9 +59,9 @@ class Partners(models.Model):
         return self.title
 
     img_thumbnail = ImageSpecField(source='img',
-                                       processors=[ResizeToFill(184, 90)],
-                                       format='PNG',
-                                       options={'quality': 100})
+                                   processors=[ResizeToFill(184, 90)],
+                                   format='PNG',
+                                   options={'quality': 100})
 
 
 # --------------------------------------------------- partners img rename --------------------------------------------------------

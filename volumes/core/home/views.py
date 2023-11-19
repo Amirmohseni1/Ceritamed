@@ -26,7 +26,7 @@ def home_page(request):
         'customer': customer,
         'Home_datas': home_data
     }
-    return render(request, "home_page.html", context)
+    return render(request, "home/index.html", context)
 
 
 def about_us(request):

@@ -1,4 +1,4 @@
-{% extends 'Share/_Ceritamed_BaseHTML.html' %}
+{% extends 'share/base_layout.html' %}
 {% load static %}
 
 {% block content %}
@@ -14,7 +14,7 @@
                             <h3>لم یتم العثور علی الصفحة</h3>
                             <p>الصفحة المطلوبة يمكن أن تكون محذوفة ، خارجة عن النطاق بشكل مؤقت أو قد تم تغیير إسمها.</p>
         
-                            <a href="{% url 'Home' %}" class="btn btn-primary">العودة إلى الصفحة الرئيسية<i class="flaticon-left-chevron"></i></a>
+                            <a href="{% url 'Home:Index' %}" class="btn btn-primary">العودة إلى الصفحة الرئيسية<i class="flaticon-left-chevron"></i></a>
                         </div>
                     </div>
                 </div>

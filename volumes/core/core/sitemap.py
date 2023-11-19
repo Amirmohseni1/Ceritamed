@@ -1,7 +1,7 @@
 from django.contrib.sitemaps import Sitemap
 from django.shortcuts import reverse
 
-from blog.models import Post, PostCategory
+from Articles.models import Article, ArticleCategory
 from doctors.models import Doctor
 from services.models import ServiceCategory, Service
 
@@ -22,7 +22,7 @@ class BlogCategoryList(Sitemap):
     priority = 0.8
 
     def items(self):
-        return PostCategory.objects.all()
+        return ArticleCategory.objects.all()
 
 
 class PostsList(Sitemap):
@@ -30,7 +30,7 @@ class PostsList(Sitemap):
     priority = 0.9
 
     def items(self):
-        return Post.object.filter(active=True)
+        return Article.object.filter(active=True)
 
 
 class ServiceCategoryList(Sitemap):

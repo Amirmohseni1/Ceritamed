@@ -1,6 +1,5 @@
 import os
 from django.db import models
-from taggit.managers import TaggableManager
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
 
@@ -17,7 +16,6 @@ class DoctorEvidence (models.Model):
         verbose_name_plural = "سطح تحصیلی"
 
 
-# --------------------------------------------------- Doctor_Expertise --------------------------------------------------------
 class DoctorExpertise(models.Model):
     skills_expertise = models.CharField(max_length=50, verbose_name="عنوان تخصص پزشک")
     skills_expertise_slug = models.SlugField(unique=True, verbose_name="url تخصص پزشک", null=True)
@@ -29,8 +27,6 @@ class DoctorExpertise(models.Model):
         verbose_name = "تخصص پزشک"
         verbose_name_plural = " تخصص پزشکان"
 
-
-# --------------------------------------------------- Doctors img rename --------------------------------------------------------
 
 
 def get_filename_ext(filepath):
@@ -44,7 +40,6 @@ def upload_image_path(instance, filename):
     final_name = f"Ceritamed-Doctor {instance.slug}{ext}"
     return f"Doctor/{final_name}"
 
-# --------------------------------------------------- database --------------------------------------------------------
 class Doctor(models.Model):
     doctor_name = models.CharField(max_length=100, verbose_name="اسم دکتر")
     slug = models.SlugField(unique=True, verbose_name="URL (به انگلیسی)", null=True)
@@ -65,7 +60,6 @@ class Doctor(models.Model):
     doctor_expertise = models.ForeignKey(DoctorExpertise, verbose_name="تخصص پزشک", on_delete=models.CASCADE, null=True)
     doctor_evidence = models.ForeignKey(DoctorEvidence, verbose_name="سطح تحصیلی", on_delete=models.CASCADE, null=True)
     doctor_skill_description = models.TextField(verbose_name="توضیح کوتاه مهارت ها")
-    tags = TaggableManager(verbose_name="توانایی های پزشک")
     doctor_education_description = models.TextField(verbose_name="توضیح کوتاه تحصیلات", null=True)
     doctor_experience_years = models.IntegerField(verbose_name="تجربه کاری", null=True)
     doctor_education_place = models.CharField(max_length=150, verbose_name="محل تحصیل", null=True, )

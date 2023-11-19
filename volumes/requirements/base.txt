@@ -18,7 +18,6 @@ django-crispy-forms==1.9.2
 # Model tool apps
 django-phone-field
 django-ckeditor
-django-taggit
 django-phonenumber-field
 Babel
 phonenumbers

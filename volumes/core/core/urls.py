@@ -25,10 +25,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('home.urls', namespace='Home')),
+    path('Articles/', include("Articles.urls", namespace='Article')),
     path('', include("services.urls"), name='services_list'),
     path('', include("contact.urls"), ),
     path('', include("doctors.urls")),
-    path('', include("blog.urls")),
     path('ckeditor', include("ckeditor_uploader.urls")),
     path('admin/', admin.site.urls),
     path('sitemap.xml', views.index, {'sitemaps': sitemaps}),

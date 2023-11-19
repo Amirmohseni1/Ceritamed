@@ -1,5 +1,5 @@
 from django import template
-from ..models import PostCategory, Post
+from ..models import ArticleCategory, Article
 
 register = template.Library()
 
@@ -11,7 +11,7 @@ def search():
 
 @register.inclusion_tag('blog/components/last_posts.html')
 def last_posts():
-    posts: Post = Post.object.get_queryset().filter(active=True).order_by('-blog_views')[:4]
+    posts: Article = Article.custom_objects.get_active_list()[:4]
     return {
         "posts": posts
     }
@@ -19,7 +19,7 @@ def last_posts():
 
 @register.inclusion_tag('blog/components/category.html')
 def category():
-    categories: PostCategory = PostCategory.objects.get_queryset().all()
+    categories: ArticleCategory = ArticleCategory.objects.get_queryset().all()
     return {
         'categories': categories
     }

@@ -80,7 +80,7 @@
                             <ul class="navbar-nav">
 
                                 <li class="nav-item"><a href="{% url "Home:Index" %}"
-                                                        class="nav-link {% if url_name == 'Home' %}active{% endif %}">الصفحة
+                                                        class="nav-link {% if url_name == 'Home:Index' %}active{% endif %}">الصفحة
                                     الأصلية</a></li>
 
                                 <li class="nav-item"><a href="{% url 'Services_Category' %}"
@@ -89,15 +89,15 @@
                                 <li class="nav-item"><a href="{% url 'Doctors_list' %}"
                                                         class="nav-link {% if url_name == 'Doctors_list' %}active{% endif %}">الأطباء</a>
                                 </li>
-                                <li class="nav-item"><a href="{% url 'blog_list' %}"
-                                                        class="nav-link {% if url_name == 'blog_list' %}active{% endif %}">المدونات</a>
+                                <li class="nav-item"><a href="{% url 'Article:List' %}"
+                                                        class="nav-link {% if url_name == 'Article:List' %}active{% endif %}">المدونات</a>
                                 </li>
 
                                 <li class="nav-item"><a href="{% url 'Home:Contact-Us' %}"
-                                                        class="nav-link {% if url_name == 'contact' %}active{% endif %}">الإتصال
+                                                        class="nav-link {% if url_name == 'Home:Contact-Us' %}active{% endif %}">الإتصال
                                     بنا</a></li>
                                 <li class="nav-item"><a href="{% url "Home:About-Us" %}"
-                                                        class="nav-link {% if url_name == 'About-us' %}active{% endif %}">معلومات
+                                                        class="nav-link {% if url_name == 'Home:About-Us' %}active{% endif %}">معلومات
                                     عنا</a></li>
                             </ul>
                         {% endwith %}

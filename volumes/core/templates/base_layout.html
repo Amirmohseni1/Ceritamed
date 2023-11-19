@@ -2,20 +2,22 @@
 {% load partial_views %}
 
 <!doctype html>
-<html lang="ar">
+<html lang="en">
 <head>
-    {% include 'Share/_HeadLinks.html' %}
     <meta charset="utf-8">
-    <title>Ceritamed {% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="content-language" content="ar"/>
     <meta name="robots" content="index,follow">
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta property="og:locale" content="ar_ar">
+    <meta property="og:locale" content="en">
     <link rel="icon" type="image/png" href="{% static 'img/favicon.png' %}">
+
+    {% include 'share/head.html' %}
+    <title>Ceritamed {% block title %}{% endblock %}</title>
     {% block Meta %}{% endblock %}
+
 </head>
 
 <body>
@@ -25,7 +27,7 @@
 
 {% footer %}
 
-{% include 'Share/_Footer_js.html' %}
+{% include 'share/scripts.html' %}
 
 {% block custom-js %}{% endblock %}
 

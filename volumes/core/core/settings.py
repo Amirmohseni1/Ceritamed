@@ -28,14 +28,13 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     # insternal apps
     'contact',
-    'blog',
+    'Articles',
     'services',
     'doctors',
     'settings',
     'home',
     # external apps
     'imagekit',
-    'taggit',
     'ckeditor',
     'ckeditor_uploader',
     'phone_field',
@@ -53,7 +52,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'utils.Middleware.custom_middleware.AdminLocaleMiddleware',
 ]
 
 ROOT_URLCONF = 'core.urls'

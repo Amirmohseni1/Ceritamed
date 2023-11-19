@@ -2,8 +2,8 @@ from django.db import models
 from django.db.models.signals import post_save
 from phonenumber_field.modelfields import PhoneNumberField
 
-from utils.Base.BaseModel import BaseModel
-from utils.Services.MailService import EmailService
+from libs.Base.BaseModel import BaseModel
+from libs.Services.MailService import EmailService
 
 
 class ContactUsForm(models.Model):
@@ -61,7 +61,7 @@ def send_email(sender, instance, created, **kwargs):
         EmailService.send_email(
             subject=f'فرم از طرف : {instance.full_name}',
             context={'form': instance},
-            template_address='Emails/form.html',
+            template_address='emails/form.html',
             to='ceritamed@gmail.com',
         )
 

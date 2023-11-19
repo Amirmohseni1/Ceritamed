@@ -1,4 +1,4 @@
-{% extends "Share/_Ceritamed_BaseHTML.html" %}
+{% extends "base_layout.html" %}
 {% load static %}
 
 {% block Meta %}
@@ -60,28 +60,28 @@
                                 {% endif %}
 
 
-{#                                {% if page_obj.has_previous %}#}
-{#                                    <a href="?page={{ page_obj.previous_page_number }}"#}
-{#                                       class="prev page-numbers">#}
-{#                                        <i class="fas fa-angle-double-right"></i>#}
-{#                                    </a>#}
-{#                                {% endif %}#}
-{##}
-{#                                {% for page in paginator.page_range %}#}
-{#                                    {% if page == page_obj.number %}#}
-{#                                        <a href="{% URL page 'page' request.GET.urlencode %}"#}
-{#                                           class="page-numbers current" aria-current="page">{{ page }}</a>#}
-{#                                    {% elif page > page_obj.number|add:'-3' and page < page_obj.number|add:'3' %}#}
-{#                                        <a href="{% URL page %}"#}
-{#                                           class="page-numbers">{{ page }}</a>#}
-{#                                    {% endif %}#}
-{#                                {% endfor %}#}
-{##}
-{##}
-{#                                {% if page_obj.has_next %}#}
-{#                                    <a href="{% URL page_obj.next_page_number 'page' request.GET.urlencode %}"#}
-{#                                       class="next page-numbers"><i class="fas fa-angle-double-left"></i></a>#}
-{#                                {% endif %}#}
+                                {#                                {% if page_obj.has_previous %}#}
+                                {#                                    <a href="?page={{ page_obj.previous_page_number }}"#}
+                                {#                                       class="prev page-numbers">#}
+                                {#                                        <i class="fas fa-angle-double-right"></i>#}
+                                {#                                    </a>#}
+                                {#                                {% endif %}#}
+                                {##}
+                                {#                                {% for page in paginator.page_range %}#}
+                                {#                                    {% if page == page_obj.number %}#}
+                                {#                                        <a href="{% URL page 'page' request.GET.urlencode %}"#}
+                                {#                                           class="page-numbers current" aria-current="page">{{ page }}</a>#}
+                                {#                                    {% elif page > page_obj.number|add:'-3' and page < page_obj.number|add:'3' %}#}
+                                {#                                        <a href="{% URL page %}"#}
+                                {#                                           class="page-numbers">{{ page }}</a>#}
+                                {#                                    {% endif %}#}
+                                {#                                {% endfor %}#}
+                                {##}
+                                {##}
+                                {#                                {% if page_obj.has_next %}#}
+                                {#                                    <a href="{% URL page_obj.next_page_number 'page' request.GET.urlencode %}"#}
+                                {#                                       class="next page-numbers"><i class="fas fa-angle-double-left"></i></a>#}
+                                {#                                {% endif %}#}
 
                             </div>
                         </div>
@@ -125,5 +125,6 @@
                     <span class="sr-only">end</span>
                 </a>
             </li>
-        {% endif %}   </ul>
+        {% endif %}
+    </ul>
 </nav>
