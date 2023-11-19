@@ -5,7 +5,6 @@ from django.urls import path, include
 from .sitemap import StaticSitemap, PostsList, ServiceCategoryList, \
     ServiceList, BlogCategoryList, DoctorList
 from .views import home_page
-from django.contrib.sitemaps.views import sitemap
 from django.contrib.sitemaps import views
 
 
@@ -26,11 +25,11 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', home_page, name="Home"),
-    path('', include("apps.about_us.urls"), ),
-    path('', include("apps.services.urls"), name='services_list'),
-    path('', include("apps.contact.urls"), ),
-    path('', include("apps.doctors.urls")),
-    path('', include("apps.blog.urls")),
+    path('', include("about_us.urls"), ),
+    path('', include("services.urls"), name='services_list'),
+    path('', include("contact.urls"), ),
+    path('', include("doctors.urls")),
+    path('', include("blog.urls")),
     path('ckeditor', include("ckeditor_uploader.urls")),
     path('admin/', admin.site.urls),
     path('sitemap.xml', views.index, {'sitemaps': sitemaps}),

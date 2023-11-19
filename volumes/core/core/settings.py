@@ -27,16 +27,15 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.sites',
     # insternal apps
-    'apps.about_us',
-    'apps.contact',
-    'apps.blog',
-    'apps.services',
-    'apps.doctors',
-    'apps.additional_features',
-    'apps.forms',
-    'apps.newsletters',
-    'apps.accounts',
-    'apps.custom_template_tags',
+    'about_us',
+    'contact',
+    'blog',
+    'services',
+    'doctors',
+    'additional_features',
+    'forms',
+    'newsletters',
+    'custom_template_tags',
     # external apps
     'django_render_partial',
     'imagekit',
@@ -97,10 +96,6 @@ DATABASES = {
         'PORT': '5432',
     }
 }
-
-# custom user conf
-AUTH_USER_MODEL = "accounts.User"
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {

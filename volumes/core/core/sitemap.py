@@ -1,9 +1,9 @@
 from django.contrib.sitemaps import Sitemap
 from django.shortcuts import reverse
 
-from apps.blog.models import Post, PostCategory
-from apps.doctors.models import Doctor
-from apps.services.models import ServiceCategory, Service
+from blog.models import Post, PostCategory
+from doctors.models import Doctor
+from services.models import ServiceCategory, Service
 
 
 class StaticSitemap(Sitemap):

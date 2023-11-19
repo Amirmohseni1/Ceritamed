@@ -1,5 +1,5 @@
 # Base frameworks
-Django
+Django==3.1
 
 # Database apps
 psycopg

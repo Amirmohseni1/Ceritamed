@@ -1,8 +1,8 @@
 from django.shortcuts import render
-from apps.doctors.models import Doctor
+from doctors.models import Doctor
 
-from apps.services.models import Service, ServiceCategory
-from apps.additional_features.models import Slider, Partners, Customers, HomeData
+from services.models import Service, ServiceCategory
+from additional_features.models import Slider, Partners, Customers, HomeData
 
 
 
