@@ -1,0 +1,227 @@
+{% extends "Share/_Ceritamed_BaseHTML.html" %}
+{% load static %}
+
+{% block Meta %}
+    <meta name="keywords" content="{% for post in blog_ditail.tags.all %}{{ post }} , {% endfor %}">
+    <meta name="description" content="{{ blog_ditail.description }}">
+    <meta name="author" content="Ceritamed">
+    <meta name="owner" content="Ceritamed">
+    <meta property="article:published_time" content="{{ blog_ditail.created }}">
+    <meta property="article:modified_time" content="{{ blog_ditail.update }}">
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{ blog_ditail.title }}"/>
+    <meta property="og:description" content="{{ blog_ditail.description }}"/>
+    <meta property="og:image" content="https://ceritamed.com{{ blog_ditail.img_thumbnail_Big.url }}"/>
+    <meta property="og:image:type" content="image/jpg">
+    <meta property="og:image:url" content="https://ceritamed.com{{ blog_ditail.img_thumbnail_Big.url }}">
+    <meta property="og:url" content="https://ceritamed.com{{ request.get_full_path }}"/>
+    <meta property="og:site_name" content="ceritamed"/>
+    <meta name="twitter:title" content="{{ blog_ditail.title }}">
+    <meta name="twitter:description" content="{{ blog_ditail.description }}">
+    <meta name="twitter:image" content="https://ceritamed.com{{ blog_ditail.img_thumbnail_Big.url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://ceritamed.com{{ request.get_full_path }}"/>
+
+
+{% endblock %}
+
+{% block title %} | {{ blog_ditail.title }}{% endblock %}
+
+{% block content %}
+    <section class="blog-details-area ptb-100">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-12 ">
+                    <div class="blog-details-desc ">
+
+                        <div class=" p-3 blog-shadow">
+                            <div class="article-image">
+                                <h1 class="font-weight-bold my-2" style="font-size: 2em">{{ blog_ditail.h1 }}</h1>
+                                <img src="{{ blog_ditail.img_thumbnail_Big.url }}" alt="{{ blog_ditail.title }}">
+                            </div>
+
+                            <div class="article-content">
+                                <div class="entry-meta">
+                                    <ul>
+                                        <li><span>كتبت في:</span> <a>{{ blog_ditail.publish }}</a></li>
+                                        <li><span>مقدم من:</span> <a href="{% url 'About-us' %}">فريق إنتاج المحتوى
+                                            سریتامد</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mt-4 text-justify content custom-descriptions-css">
+                                    {{ blog_ditail.descriptions | safe }}
+                                    <div class="container ">
+                                        <div class="row py-3 align-items-center text-center">
+                                            <div class="col-md-3 ">
+                                                <div class="btn-box d-none d-sm-block btn-container">
+                                                    <a rel="noreferrer" href="https://wa.me/+989377974625" class="btn btn-primary shadow btn--jump is-active text-dark"
+                                                       target="_blank">Whatsapp<i
+                                                            class="fa fa-whatsapp text-dark"></i></a>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 font-weight-bold align-content-end h6">اطرح السؤال مجانًا من طبيب متخصص</div>
+                                            <div class="col-md-3">
+                                                <div class="btn-box">
+                                                    <a rel="noreferrer" href="https://wa.me/+989377974625" class="btn btn-primary shadow shadow btn--jump is-active text-dark"
+                                                       target="_blank">Whatsapp<i class="fa fa-whatsapp text-dark"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="article-footer">
+                                <div class="article-tags">
+                                    <span><i class="fas fa-bookmark"></i></span>
+
+                                    {% for cat in blog_ditail.b_category.all %}
+                                        <a href=" {{ cat.get_absolute_url }} "> {{ cat }} <span>,</span></a>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="article-share">
+                                    <ul class="social">
+                                        <li><span>شارك:</span></li>
+                                        <li>
+                                            <a rel="noreferrer"
+                                               href="https://twitter.com/intent/tweet?url=https://ceritamed.com{{ request.get_full_path }}"
+                                               target="_blank"><i class="fab fa-twitter pt-2"></i></a></li>
+                                        <li>
+                                            <a rel="noreferrer"
+                                               href="https://t.me/share/url?url=https://ceritamed.com{{ request.get_full_path }}"
+                                               target="_blank"><i class="fab fa-telegram pt-2"></i></a></li>
+                                        <li>
+                                            <a rel="noreferrer"
+                                               href="https://www.facebook.com/sharer/sharer.php?u=https://ceritamed.com{{ request.get_full_path }}"
+                                               target="_blank"><i class="fab fa-facebook-f pt-2"></i></a></li>
+                                        <li>
+                                            <a rel="noreferrer"
+                                               href="https://wa.me/?text=https://ceritamed.com{{ request.get_full_path }}"
+                                               target="_blank"><i class="fab fa-whatsapp pt-2"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr/>
+
+                        <section class="doctor-areaa comments-area m-1  bg-fefefe">
+                            <h3 class=" comments-title  mb-1  pr-0">أطباء ذات صلة:</h3>
+                            <div class="container">
+
+                                <div class="doctor-slides owl-carousel owl-theme">
+
+                                    {% for doctor in Doctors %}
+
+                                        <div class="single-doctor-box shadow">
+                                            <div class="doctor-image">
+                                                <img src="{{ doctor.img_thumbnail_small.url }}"
+                                                     alt="{{ doctor.doctor_name }}">
+
+                                                <a href="{{ doctor.get_absolute_url }}" class="details-btn"><i
+                                                        class="fas fa-plus "></i></a>
+                                            </div>
+
+                                            <div class="doctor-content">
+                                                <h3><a href="{{ doctor.get_absolute_url }}">
+                                                    دکتر {{ doctor.doctor_name }}</a></h3>
+                                                <span> {{ doctor.doctor_evidence }} {{ doctor.doctor_expertise }}</span>
+
+                                            </div>
+                                        </div>
+
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </section>
+
+
+                        <div class="comments-area">
+                            <h3 class="comments-title">الآراء:</h3>
+
+                            <ol class="comment-list">
+                                <li class="comment">
+                                    {% for comment in comments %}
+                                        <article class="comment-body pr-3">
+                                            <footer class="comment-meta">
+                                                <div class="comment-author vcard">
+                                                    <b class="fn">{{ comment.name }}</b>
+                                                    <span class="says">می گوید:</span>
+                                                </div>
+
+                                                <div class="comment-metadata">
+                                                    <a>
+                                                        <time>{{ comment.created }}</time>
+                                                    </a>
+                                                </div>
+                                            </footer>
+
+                                            <div class="comment-content">
+                                                <p>{{ comment.text | linebreaks }}</p>
+                                            </div>
+
+                                        </article>
+                                    {% endfor %}
+                                </li>
+
+
+                            </ol>
+
+                            <div class="comment-respond">
+                                <h3 class="comment-reply-title">اكتبوا آرائكم</h3>
+
+                                <form class="comment-form" method="post">
+                                    {% csrf_token %}
+
+                                    {% if messages %}
+                                        {% for message in messages %}
+                                            {% if "comment" in message.tags %}
+                                                <div class="alert alert-success mt-3">
+                                                    <p> {{ message }} </p>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+
+                                    <p class="comment-notes">
+                                        <span id="email-notes"></span>لن يتم نشر بريدك الإلكتروني.تم وضع علامة على
+                                        الأجزاء المطلوبة<span class="required">*</span>
+                                    </p>
+                                    <p class="comment-form-comment">
+                                        <label>رأيك</label>
+                                        {{ created_comment.text }}
+                                        <div class="help-block with-errors">
+                                            {% for errors in created_comment.text.errors %}
+                                                <p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}
+                            </div>
+                            </p>
+                            <p class="comment-form-author">
+                                <label>إسمك<span class="required">*</span></label>
+                                {{ created_comment.name }}
+                                <div class="help-block with-errors">{% for errors in created_comment.name.errors %}
+                                    <p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}</div>
+
+                        </p>
+                        <p class="comment-form-email">
+                            <label>البريد الألكتروني<span class="required">*</span></label>
+                            {{ created_comment.email }}
+                            <div class="help-block with-errors">{% for errors in created_comment.email.errors %}
+                                <p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}</div>
+                    </p>
+                    <p class="form-submit">
+                        <input type="submit" name="submit-comment" id="submit" class="submit" value="إرسال">
+                    </p>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        {% include 'blog/sidebar.html' %}
+
+    </section>
+{% endblock %}

@@ -4,7 +4,7 @@ from django.urls import path, include
 
 from .sitemap import StaticSitemap, PostsList, ServiceCategoryList, \
     ServiceList, BlogCategoryList, DoctorList
-from .views import home_page
+from home.views import home_page
 from django.contrib.sitemaps import views
 
 
@@ -24,8 +24,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('', home_page, name="Home"),
-    path('', include("about_us.urls"), ),
+    path('', include('home.urls', namespace='Home')),
     path('', include("services.urls"), name='services_list'),
     path('', include("contact.urls"), ),
     path('', include("doctors.urls")),

@@ -2,7 +2,7 @@
 {% load static %}
 {% load custom_form %}
 
-{% block title %} | {{ services.seo }}{% endblock %}
+{% block title %} | {{ services.seo }} {% endblock %}
 
 {% block Meta %}
     <meta name="keywords" content="{% for tag in services.tags.all %}{{ tag }} , {% endfor %}">

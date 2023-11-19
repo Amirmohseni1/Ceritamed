@@ -1,0 +1,26 @@
+{% load static %}
+{% load blog_componet %}
+{% load custom_form %}
+
+<div class="col-lg-4 col-md-12">
+    <aside class="widget-area" id="secondary">
+
+        {% search %}
+
+        {% form1 %}
+
+        {% if blog_ditail %}
+            {% include 'blog/components/components/related_posts.html' %}
+        {% else %}
+            {% last_posts %}
+        {% endif %}
+
+        {% category %}
+
+        {% if blog_ditail %}
+            {% include 'blog/components/components/tags.html' %}
+        {% endif %}
+
+
+    </aside>
+</div>

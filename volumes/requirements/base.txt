@@ -13,7 +13,6 @@ django-imagekit
 django-compressor
 cssmin
 jsmin
-django-render-partial
 django-crispy-forms==1.9.2
 
 # Model tool apps

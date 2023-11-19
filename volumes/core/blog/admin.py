@@ -6,7 +6,7 @@ from .models import Post, PostCategory, PostComment
 
 # Register your models here.
 
-# --------------------------------------------------- Blog  --------------------------------------------------------
+# --------------------------------------------------- blog  --------------------------------------------------------
 def make_published(modeladmin, request, queryset):
     queryset.update(active=True)
 
@@ -34,7 +34,7 @@ class BlogAdmin(admin.ModelAdmin):
 admin.site.register(Post, BlogAdmin)
 
 
-# --------------------------------------------------- Blog Tag --------------------------------------------------------
+# --------------------------------------------------- blog Tag --------------------------------------------------------
 
 def make_published(modeladmin, request, queryset):
     queryset.update(active=True)
@@ -63,7 +63,7 @@ class BlogCommentAdmin(admin.ModelAdmin):
 admin.site.register(PostComment, BlogCommentAdmin)
 
 
-# --------------------------------------------------- Blog Category --------------------------------------------------------
+# --------------------------------------------------- blog Category --------------------------------------------------------
 
 class BlogCategoryAdmin(admin.ModelAdmin):
     list_display = ("__str__",)

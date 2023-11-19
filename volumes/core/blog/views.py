@@ -22,7 +22,7 @@ def blog_list(request):
         'paginator': paginator,
     }
 
-    return render(request, 'Blog/templates/Blog/list_view.html', context)
+    return render(request, 'blog/list_view.html', context)
 
 
 # --------------------------------------------------- blog Detail funcion base --------------------------------------------------------
@@ -61,14 +61,14 @@ def blog_detail(request, pk, slug):
         'comments': posts_comments,
         'created_comment': created_comment,
     }
-    return render(request, "Blog/templates/Blog/detail_view.html", context)
+    return render(request, "blog/detail_view.html", context)
 
 
 # --------------------------------------------------- blog search  --------------------------------------------------------
 
 
 class Search(ListView):
-    template_name = "Blog/templates/Blog/list_view.html"
+    template_name = "blog/list_view.html"
     paginate_by = 8
 
     def get_queryset(self):
@@ -93,5 +93,5 @@ def blog_category(request, slug):
         "page_obj": page_obj,
         'paginator': paginator,
     }
-    return render(request, 'Blog/templates/Blog/list_view.html', context)
+    return render(request, 'blog/list_view.html', context)
 

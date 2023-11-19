@@ -1,13 +1,10 @@
 {% load static %}
-{% load render_partial %}
-{% load base_partial_views %}
+{% load partial_views %}
 
 <!doctype html>
 <html lang="ar">
 <head>
     {% include 'Share/_HeadLinks.html' %}
-    <meta name="google-site-verification" content="QlauIqyrr47lS0LxtemwX-WdYMELKOuphZ8G0TsUKm8"/>
-    <meta name="google-site-verification" content="K_286l8Db1YJ2dqx_MMViRXp3AmShHx0X0esNaJqlsM"/>
     <meta charset="utf-8">
     <title>Ceritamed {% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,8 +22,6 @@
 {% header %}
 
 {% block content %}{% endblock %}
-
-{#{% render_partial 'footer' %}#}
 
 {% footer %}
 
