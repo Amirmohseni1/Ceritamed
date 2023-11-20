@@ -1,21 +1,15 @@
 import os
 from pathlib import Path
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'vsi^pgp1hr=k*30z55+nzb2(n4r8n#ti)(-!!zvs9!j08yf&sb'
-
-SECURE_SSL_REDIRECT = False
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*']
+SECRET_KEY = config('SECRET_KEY')
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,7 +49,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
-
 
 TEMPLATES = [
     {
@@ -146,32 +139,15 @@ CKEDITOR_CONFIGS = {
 }
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
-#debug_toolbar conf
-
-if DEBUG:
-    INTERNAL_IPS = ('127.0.0.1',)
-    MIDDLEWARE += (
-        'debug_toolbar.middleware.DebugToolbarMiddleware',
-    )
-
-    INSTALLED_APPS += (
-        'debug_toolbar',
-    )
-
-    DEBUG_TOOLBAR_CONFIG = {
-        'INTERCEPT_REDIRECTS': False,
-    }
-
 # statics conf
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR.parent, "static")
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR.parent, "media")
-    
+
 # crispy pack conf
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # phone number conf
 PHONENUMBER_DB_FORMAT = "INTERNATIONAL"
-

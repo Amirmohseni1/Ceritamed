@@ -8,15 +8,15 @@ services:
     command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
     expose:
       - 8000
-  #  environment:
-  #    - SECRET_KEY=django-insecure-f%12(rqpha3k2m4$jqtnbslzttg-h0jn(*jj=h#_#v+%mz(c7w
-  #    - SETTING=conf.settings.development
-  #    - SQL_ENGINE=django.db.backends.postgresql
-  #    - SQL_DATABASE=Webra
-  #    - SQL_USER=Webra
-  #    - SQL_PASSWORD=Amir@1995
-  #    - SQL_HOST=db
-  #    - SQL_PORT=5432
+    environment:
+      - SECRET_KEY=vsi^pgp1hr=k*30z55+nzb2(n4r8n#ti)(-!!zvs9!j08yf&sb
+      - SETTING=core.settings.development
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DATABASE=ceritamed
+      - SQL_USER=ceritamed
+      - SQL_PASSWORD=Amir@1995
+      - SQL_HOST=db
+      - SQL_PORT=5432
     volumes:
       - ./volumes/core:/app
       - ./volumes/static:/static
@@ -30,7 +30,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - .volumes/db_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=ceritamed
       - POSTGRES_USER=ceritamed
