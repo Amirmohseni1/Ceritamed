@@ -1,21 +1,20 @@
+from django.contrib import messages
 from django.shortcuts import render
-from doctors.models import Doctor
 
+from contact.forms import ContactUsModelForms
+from doctors.models import Doctor
 from services.models import Service, ServiceCategory
 from settings.models import Slider, Partners, Customers, HomeData
 
-from django.contrib import messages
-from contact.forms import ContactUsForms
-
 
 def home_page(request):
-    sliders: Slider = Slider.objects.get_queryset().filter(active=True).order_by('-id')[:5]
-    partner: Partners = Partners.objects.get_queryset().filter(active=True).order_by("-id")
-    doctor_section: Doctor = Doctor.objects.get_queryset().filter(home_page=True).order_by('-id')[:10]
-    service: Service = Service.object.get_queryset().filter(active_home=True).order_by('-id')[:6]
-    service_category: ServiceCategory = ServiceCategory.objects.get_queryset().filter(active_home=True).order_by('-id')[:4]
-    customer: Customers = Customers.objects.get_queryset().filter(active=True).order_by('-id')
-    home_data: HomeData = HomeData.objects.get_queryset().filter(active=True)[:4]
+    sliders = Slider.objects.get_queryset().filter(active=True).order_by('-id')[:5]
+    partner = Partners.objects.get_queryset().filter(active=True).order_by("-id")
+    doctor_section = Doctor.objects.get_queryset().filter(home_page=True).order_by('-id')[:10]
+    service = Service.object.get_queryset().filter(active_home=True).order_by('-id')[:6]
+    service_category = ServiceCategory.objects.get_queryset().filter(active_home=True).order_by('-id')[:4]
+    customer = Customers.objects.get_queryset().filter(active=True).order_by('-id')
+    home_data = HomeData.objects.get_queryset().filter(active=True)[:4]
 
     context = {
         'service': service,
@@ -30,8 +29,8 @@ def home_page(request):
 
 
 def about_us(request):
-    data: HomeData = HomeData.objects.get_queryset().filter(active=True).order_by('-id')[:4]
-    partner: Partners = Partners.objects.get_queryset().filter(active=True).order_by('-id')
+    data = HomeData.objects.get_queryset().filter(active=True).order_by('-id')[:4]
+    partner = Partners.objects.get_queryset().filter(active=True).order_by('-id')
 
     context = {
         'data': data,
@@ -41,11 +40,11 @@ def about_us(request):
 
 
 def contact(request):
-    contact_us_form: ContactUsForms = ContactUsForms(request.POST or None)
+    contact_us_form = ContactUsModelForms(request.POST or None)
     if contact_us_form.is_valid():
         contact_us_form.save()
         messages.success(request, 'لقد تم إرسال إستمارتک بعنوان {} بنجاح '.format(contact_us_form.cleaned_data.get('subject')))
-        contact_us_form: ContactUsForms = ContactUsForms()
+        contact_us_form: ContactUsModelForms = ContactUsModelForms()
 
     context = {
         'contact_us_form': contact_us_form,

@@ -4,8 +4,6 @@ from django.contrib import admin
 from .models import Slider, Partners, Customers, HomeData
 
 
-# --------------------------------------------------- Slider --------------------------------------------------------
-
 def make_published(modeladmin, request, queryset):
     queryset.update(active=True)
 
@@ -27,8 +25,6 @@ class SliderAdmin(admin.ModelAdmin):
 
 admin.site.register(Slider, SliderAdmin)
 
-
-# --------------------------------------------------- partners --------------------------------------------------------
 
 
 def make_published(modeladmin, request, queryset):
@@ -53,8 +49,6 @@ class PartnersAdmin(admin.ModelAdmin):
 admin.site.register(Partners, PartnersAdmin)
 
 
-# --------------------------------------------------- customers --------------------------------------------------------
-
 
 def make_published(modeladmin, request, queryset):
     queryset.update(active=True)
@@ -77,8 +71,6 @@ class CustomersAdmin(admin.ModelAdmin):
 
 admin.site.register(Customers, CustomersAdmin)
 
-
-# --------------------------------------------------- Home Page Data --------------------------------------------------------
 
 
 def make_published(modeladmin, request, queryset):

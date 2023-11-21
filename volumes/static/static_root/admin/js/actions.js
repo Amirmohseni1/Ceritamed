@@ -110,15 +110,15 @@
             lastChecked = target;
             updateCounter();
         });
-        $('form#changelist-form table#result_list tr').on('change', 'td:gt(0) :input', function() {
+        $('contact#changelist-contact table#result_list tr').on('change', 'td:gt(0) :input', function() {
             list_editable_changed = true;
         });
-        $('form#changelist-form button[name="index"]').on('click', function(event) {
+        $('contact#changelist-contact button[name="index"]').on('click', function(event) {
             if (list_editable_changed) {
                 return confirm(gettext("You have unsaved changes on individual editable fields. If you run an action, your unsaved changes will be lost."));
             }
         });
-        $('form#changelist-form input[name="_save"]').on('click', function(event) {
+        $('contact#changelist-contact input[name="_save"]').on('click', function(event) {
             let action_changed = false;
             $('select option:selected', options.actionContainer).each(function() {
                 if ($(this).val()) {

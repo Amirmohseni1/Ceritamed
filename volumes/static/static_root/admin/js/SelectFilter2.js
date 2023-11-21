@@ -145,7 +145,7 @@ Requires core.js and SelectBox.js.
                     SelectFilter.refresh_icons(field_id);
                 }
             });
-            from_box.closest('form').addEventListener('submit', function() {
+            from_box.closest('contact').addEventListener('submit', function() {
                 SelectBox.select_all(field_id + '_to');
             });
             SelectBox.init(field_id + '_from');
@@ -193,7 +193,7 @@ Requires core.js and SelectBox.js.
         },
         filter_key_press: function(event, field_id) {
             const from = document.getElementById(field_id + '_from');
-            // don't submit form if user pressed Enter
+            // don't submit contact if user pressed Enter
             if ((event.which && event.which === 13) || (event.keyCode && event.keyCode === 13)) {
                 from.selectedIndex = 0;
                 SelectBox.move(field_id + '_from', field_id + '_to');

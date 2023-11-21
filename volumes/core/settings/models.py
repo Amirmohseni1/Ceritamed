@@ -1,4 +1,5 @@
 import os
+
 from django.db import models
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
@@ -34,15 +35,11 @@ class Slider(models.Model):
         return self.title
 
 
-# --------------------------------------------------- partners img rename --------------------------------------------------------
-
 def upload_image_path_partners(instance, filename):
     name, ext = get_filename_ext(filename)
     final_name = f"Ceritamed-partners-{instance.title}{ext}"
     return f"partners-logo/{final_name}"
 
-
-# --------------------------------------------------- partners --------------------------------------------------------
 
 class Partners(models.Model):
     title = models.CharField(max_length=150, verbose_name="نام شرکت")
@@ -64,15 +61,12 @@ class Partners(models.Model):
                                    options={'quality': 100})
 
 
-# --------------------------------------------------- partners img rename --------------------------------------------------------
 
 def upload_image_path_customers(instance, filename):
     name, ext = get_filename_ext(filename)
     final_name = f"Ceritamed-customers-{instance.name}{ext}"
     return f"customers-img/{final_name}"
 
-
-# --------------------------------------------------- customers --------------------------------------------------------
 
 class Customers(models.Model):
     name = models.CharField(max_length=150, verbose_name="نام مشتری")
@@ -93,8 +87,6 @@ class Customers(models.Model):
     def __str__(self):
         return self.name
 
-
-# --------------------------------------------------- Home page Data --------------------------------------------------------
 
 class HomeData(models.Model):
     title = models.CharField(max_length=150, verbose_name="عنوان")

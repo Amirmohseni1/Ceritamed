@@ -544,7 +544,7 @@ module.exports = function(XRegExp) {
                 throw new SyntaxError(ERR_UNKNOWN_NAME + match[0]);
             }
 
-            // Switch to the negated form of the referenced Unicode token
+            // Switch to the negated contact of the referenced Unicode token
             if (item.inverseOf) {
                 slug = normalize(item.inverseOf);
                 if (!unicode.hasOwnProperty(slug)) {

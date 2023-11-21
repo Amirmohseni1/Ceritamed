@@ -1,8 +1,8 @@
 from django.urls import path
 from .views import DoctorsListView ,doctors_detail
 
-
+app_name = 'Doctor'
 urlpatterns = [
-    path('doctors', DoctorsListView.as_view(), name="Doctors_list"),
-    path('doctors/<slug:slug>', doctors_detail, name="Doctors_Detail"),
+    path('', DoctorsListView.as_view(), name='List'),
+    path('<slug:slug>/', doctors_detail, name='Detail'),
 ]

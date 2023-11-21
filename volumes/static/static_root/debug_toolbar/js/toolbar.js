@@ -92,7 +92,7 @@ const djdt = {
             const ajaxData = {};
 
             if (this.tagName === "BUTTON") {
-                const form = this.closest("form");
+                const form = this.closest("contact");
                 url = this.formAction;
                 ajaxData.method = form.method.toUpperCase();
                 ajaxData.body = new FormData(form);

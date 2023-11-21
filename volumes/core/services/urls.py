@@ -1,8 +1,9 @@
 from django.urls import path
 from .views import ServicesCategory, services_list, services_detail
 
+app_name = 'Service'
 urlpatterns = [
-    path('services', ServicesCategory.as_view(), name="Services_Category"),
-    path('services/<slug:slug>', services_list, name="Services_List"),
-    path('services/<pk>/<slug:slug>', services_detail, name="services_detail"),
+    path('', ServicesCategory.as_view(), name="Categories"),
+    path('<slug:slug>/', services_list, name="Category-Childes"),
+    path('<pk>/<slug:slug>/', services_detail, name="Details"),
 ]

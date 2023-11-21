@@ -1,23 +1,22 @@
 from django.contrib import admin
-from .models import ContactUsForm, Form
-from .models import Newsletters
+from .models import ContactUs, Consultation, Newsletters
+
+@admin.register(ContactUs)
+class ContactUsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'email', 'subject', 'is_read', 'created_at')
+    list_filter = ('is_read',)
+    search_fields = ('title', 'body', 'subject')
 
 
-class ContactUsFormAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'full_name', 'email', 'date', 'is_read',)
-    list_filter = ('is_read', 'date',)
+@admin.register(Consultation)
+class ContactUsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'phone', 'source', 'is_read', 'created_at')
+    list_filter = ('is_read',)
+    search_fields = ('title', 'body')
 
 
-admin.site.register(ContactUsForm, ContactUsFormAdmin)
-admin.site.register(Form)
-
-
-
+@admin.register(Newsletters)
 class NewslettersAdmin(admin.ModelAdmin):
-    list_display = ('email', 'date')
-    list_filter = ('date',)
+    list_display = ('email', 'created_at')
+    list_filter = ('created_at',)
     search_fields = ('email',)
-
-
-admin.site.register(Newsletters, NewslettersAdmin)
-

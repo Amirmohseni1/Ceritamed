@@ -1,10 +1,7 @@
-from django.http import Http404
 from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView
+
 from .models import ServiceCategory, Service
-# Create your views here.
-from django.views.generic import ListView, DetailView
-# from forms.forms import ServicesPageForm
-from django.contrib import messages
 
 
 # --------------------------------------------------- Services_category ListView--------------------------------------------------------
@@ -30,9 +27,9 @@ def services_list(request, slug):
 # --------------------------------------------------- Services_category DetailView--------------------------------------------------------
 
 def services_detail(request, slug, pk):
-    services: Service = get_object_or_404(Service.object.prefetch_related('serviceprice_set'), slug=slug, active=True,id=pk)
+    services: Service = get_object_or_404(Service.object.prefetch_related('serviceprice_set'), slug=slug, active=True, id=pk)
     prices: Service = services.serviceprice_set.all()
-    
+
     context = {
         "services": services,
         'prices': prices

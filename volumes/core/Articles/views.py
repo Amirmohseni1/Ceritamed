@@ -48,4 +48,4 @@ class ArticleCategoryListView(ListView):
 
     def get_queryset(self):
         category = self.kwargs.get('slug')
-        return Article.custom_objects.get_active_list().filter(category=category)
+        return Article.custom_objects.get_active_list_by_category(category=category)

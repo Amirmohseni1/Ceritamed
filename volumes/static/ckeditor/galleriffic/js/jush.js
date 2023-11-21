@@ -429,7 +429,7 @@ jush.urls = {
 		'Core_JavaScript_1.5_Reference/Statements/if...else',
 		'Core_JavaScript_1.5_Reference/Statements/try...catch',
 		'Core_JavaScript_1.5_Reference/Operators/Special_Operators/$1_Operator',
-		'DOM/document.$1', 'DOM/element.$1', 'DOM/event.$1', 'DOM/form.$1', 'DOM/table.$1', 'DOM/window.$1',
+		'DOM/document.$1', 'DOM/element.$1', 'DOM/event.$1', 'DOM/contact.$1', 'DOM/table.$1', 'DOM/window.$1',
 		'Core_JavaScript_1.5_Reference/Global_Objects/Array/$1',
 		'Core_JavaScript_1.5_Reference/Global_Objects/Date/$1',
 		'Core_JavaScript_1.5_Reference/Global_Objects/Function/$1',

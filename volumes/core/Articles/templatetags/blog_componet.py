@@ -11,15 +11,11 @@ def search():
 
 @register.inclusion_tag('blog/components/last_posts.html')
 def last_posts():
-    posts: Article = Article.custom_objects.get_active_list()[:4]
-    return {
-        "posts": posts
-    }
+    articles = Article.custom_objects.get_active_list()[:4]
+    return {'articles': articles}
 
 
 @register.inclusion_tag('blog/components/category.html')
 def category():
-    categories: ArticleCategory = ArticleCategory.objects.get_queryset().all()
-    return {
-        'categories': categories
-    }
+    categories = ArticleCategory.custom_objects.get_active_list()
+    return {'categories': categories}

@@ -30,7 +30,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - .volumes/db_data:/var/lib/postgresql/data/
+      - ./volumes/db_data:/var/lib/postgresql/data/
     environment:
       - POSTGRES_DB=ceritamed
       - POSTGRES_USER=ceritamed

@@ -1,82 +1,69 @@
 from django.db import models
 from django.db.models.signals import post_save
+from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 
-from libs.Base.BaseModel import BaseModel
-from libs.Services.MailService import EmailService
+from libs.utils.mail import EmailService
+from libs.db.models import SeoModel, StatusModel, AuditableModel
 
 
-class ContactUsForm(models.Model):
-    full_name = models.CharField(max_length=200, verbose_name='نام و نام خانوادگی')
-    email = models.EmailField(max_length=150, verbose_name='ایمیل')
-    subject = models.CharField(max_length=300, verbose_name='موضوع')
-    date = models.DateTimeField(auto_now=True, verbose_name='تاریخ ارسال')
-    text = models.TextField(verbose_name='متن پیام')
-    is_read = models.BooleanField(default=False, verbose_name='خوانده شده / خوانده نشده')
-    is_result = models.TextField(verbose_name='نتیجه پیگیری', blank=True, null=True)
+class ContactUs(AuditableModel, StatusModel):
+    email = models.EmailField(verbose_name=_('Email'))
+    subject = models.CharField(verbose_name=_('Subject'), max_length=300)
+    body = models.TextField(verbose_name=_('Body'))
+    is_read = models.BooleanField(verbose_name=_('Is read'), default=False)
 
-    def __str__(self):
-        return self.subject
-
-    class Meta:
-        verbose_name = "تماس با ما"
-        verbose_name_plural = "تماس با ما"
-        ordering = ['-date']
-
-
-class Form(BaseModel):
-    GENDER_CHOICES = [
-        ('m', 'مرد'),
-        ('f', 'زن'),
-    ]
-    full_name = models.CharField(max_length=200, verbose_name='نام و نام خانوادگی', null=True, blank=True)
-    phone = PhoneNumberField(null=False, blank=False, verbose_name='شماره تلفن')
-    email = models.EmailField(max_length=150, verbose_name='ایمیل', null=True, blank=True)
-    text = models.TextField(verbose_name='متن پیام', null=True, blank=True)
-    where = models.URLField(verbose_name='صفحه ارسال فرم', max_length=300, null=True, blank=True)
-    is_read = models.BooleanField(default=False, verbose_name='خوانده شده / خوانده نشده')
-    is_result = models.TextField(verbose_name='نتیجه پیگیری', blank=True, null=True)
-    age = models.PositiveIntegerField(default=0, verbose_name='سن', blank=True, null=True)
-    gender = models.CharField(max_length=1, verbose_name='جنس', choices=GENDER_CHOICES, blank=True, null=True)
-    country = models.CharField(max_length=100, verbose_name='کشور', blank=True, null=True)
-    sickness = models.CharField(max_length=100, verbose_name='بیماری', blank=True, null=True)
-    absorption_channel = models.CharField(max_length=100, verbose_name='کانال جذب', blank=True, null=True)
-    description = models.CharField(max_length=100, verbose_name='توضیحات', blank=True, null=True)
-    follow_up_1 = models.BooleanField(default=False, verbose_name='دو روز بعد')
-    follow_up_2 = models.BooleanField(default=False, verbose_name='دو هفته بعد')
-    follow_up_3 = models.BooleanField(default=False, verbose_name='یک ماه بعد')
-    follow_up_4 = models.BooleanField(default=False, verbose_name='یک سال بعد')
+    created_by = None
+    is_active = None
+    changed_active_by = None
 
     def __str__(self):
-        return self.full_name
+        return f'{self.title} - {self.subject}'
 
     class Meta:
-        verbose_name = "فرم"
-        verbose_name_plural = "فرم ها"
-        ordering = ['-created_date']
+        verbose_name = _('Contact Us')
+        verbose_name_plural = _('Contact Us')
+
+
+class Consultation(AuditableModel, StatusModel):
+    phone = PhoneNumberField(verbose_name=_('Phone number'), null=False, blank=False)
+    body = models.TextField(verbose_name=_('Body'), null=True, blank=True)
+    is_read = models.BooleanField(verbose_name=_('is Read'), default=False)
+    source = models.URLField(verbose_name=_('Page source'), null=True, blank=True)
+
+    created_by = None
+    is_active = None
+    changed_active_by = None
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _('Consultation')
+        verbose_name_plural = _('Consultation')
 
 
 def send_email(sender, instance, created, **kwargs):
     if created:
         EmailService.send_email(
-            subject=f'فرم از طرف : {instance.full_name}',
-            context={'form': instance},
-            template_address='emails/form.html',
+            subject=f'from : {instance.full_name}',
+            context={'contact': instance},
+            template_address='emails/contact.html',
             to='ceritamed@gmail.com',
         )
 
 
-post_save.connect(send_email, sender=Form)
+post_save.connect(send_email, sender=Consultation)
 
 
 class Newsletters(models.Model):
-    email = models.CharField(max_length=150, verbose_name='ایمیل')
-    date = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ')
+    email = models.CharField(verbose_name=_('Email'), max_length=150)
+    created_at = models.DateTimeField(verbose_name=_('Created at'), auto_now_add=True)
 
     def __str__(self):
         return self.email
 
     class Meta:
-        verbose_name = "ایمیل"
-        verbose_name_plural = "ایمیل ها"
-        ordering = ['-date']
+        verbose_name = _('Email')
+        verbose_name_plural = _('Emails')
+        ordering = ['-created_at']

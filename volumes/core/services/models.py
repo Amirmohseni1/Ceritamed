@@ -1,21 +1,16 @@
 import os
+
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
+from django.utils import timezone
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
-from django.utils import timezone
+from django.urls import reverse
 
-
-# -------------------------------------------------- Servise object  --------------------------------------------------------
 
 class ServiceObject(models.Manager):
-    # -------------------- Servise object active ------------------
-
     def active_Servise(self):
         return self.get_queryset().filter(active=True)
-
-
-# --------------------------------------------------- Servise_category img rename --------------------------------------------------------
 
 
 def get_filename_ext(filepath):
@@ -30,16 +25,11 @@ def upload_image_path(instance, filename):
     return f"Servise_category/{final_name}"
 
 
-# --------------------------------------------------- Servise icons rename --------------------------------------------------------
-
-
 def upload_image_path_servise_icons(instance, filename):
     name, ext = get_filename_ext(filename)
     final_name = f"Ceritamed-{instance.title}{ext}"
     return f"icon/{final_name}"
 
-
-# --------------------------------------------------- Servise_category DB --------------------------------------------------------
 
 class ServiceCategory(models.Model):
     title = models.CharField(max_length=150, verbose_name='عنوان خدمت')
@@ -58,7 +48,7 @@ class ServiceCategory(models.Model):
     active_home = models.BooleanField(default=False, verbose_name='صفحه اول سایت')
 
     def get_absolute_url(self):
-        return f"/services/{self.slug.replace(' ', '-')}"
+        return reverse('Service:Categories', args=[self.slug])
 
     class Meta:
         verbose_name = "دستته خدمت"
@@ -68,16 +58,11 @@ class ServiceCategory(models.Model):
         return self.title
 
 
-# --------------------------------------------------- Servise img rename --------------------------------------------------------
-
-
 def upload_image_path_Servise(instance, filename):
     name, ext = get_filename_ext(filename)
     final_name = f"Ceritamed-{instance.title}{ext}"
     return f"Servise/{final_name}"
 
-
-# --------------------------------------------------- Servise DB --------------------------------------------------------
 
 
 class Service(models.Model):
@@ -109,7 +94,7 @@ class Service(models.Model):
     active_home = models.BooleanField(default=False, verbose_name='صفحه اول سایت')
 
     def get_absolute_url(self):
-        return f"/services/{self.pk}/{self.slug.replace(' ', '-')}"
+        return reverse('Service:Details', args=[self.pk, self.slug])
 
     class Meta:
         verbose_name = "خدمت"
@@ -119,7 +104,7 @@ class Service(models.Model):
         return self.title
 
     object = ServiceObject()
-    
+
 
 class ServicePrice(models.Model):
     service = models.ForeignKey(Service, verbose_name='خدمت', on_delete=models.CASCADE)
@@ -132,4 +117,3 @@ class ServicePrice(models.Model):
 
     def __str__(self):
         return self.name
-

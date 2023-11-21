@@ -67,7 +67,7 @@
             <div class="appointment-content">
                 {% if messages %}
                     {% for message in messages %}
-                        {% if "form" in message.tags %}
+                        {% if "contact" in message.tags %}
                             <div class="alert alert-success mt-3">
                                 <p> {{ message }} </p>
                             </div>

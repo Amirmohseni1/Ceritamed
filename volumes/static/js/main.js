@@ -219,10 +219,10 @@
             });
         });
 
-        // Subscribe form
-		// $(".newsletter-form").validator().on("submit", function (event) {
+        // Subscribe contact
+		// $(".newsletter-contact").validator().on("submit", function (event) {
 		// 	if (event.isDefaultPrevented()) {
-		// 	// handle the invalid form...
+		// 	// handle the invalid contact...
 		// 		formErrorSub();
 		// 		submitMSGSub(false, "لطفا آدرس ایمیل خود را وارد کنید.");
 		// 	} else {
@@ -239,16 +239,16 @@
 		// 	}
 		// }
 		// function formSuccessSub(){
-		// 	$(".newsletter-form")[0].reset();
+		// 	$(".newsletter-contact")[0].reset();
 		// 	submitMSGSub(true, "با تشکر ثبت شد!");
 		// 	setTimeout(function() {
 		// 		$("#validator-newsletter").addClass('hide');
 		// 	}, 4000)
 		// }
 		// function formErrorSub(){
-		// 	$(".newsletter-form").addClass("animated shake");
+		// 	$(".newsletter-contact").addClass("animated shake");
 		// 	setTimeout(function() {
-		// 		$(".newsletter-form").removeClass("animated shake");
+		// 		$(".newsletter-contact").removeClass("animated shake");
 		// 	}, 1000)
 		// }
 		// function submitMSGSub(valid, msg){
@@ -260,7 +260,7 @@
 		// 	$("#validator-newsletter").removeClass().addClass(msgClasses).text(msg);
 		// }
 		// AJAX MailChimp
-		// $(".newsletter-form").ajaxChimp({
+		// $(".newsletter-contact").ajaxChimp({
 		// 	url: "https://envytheme.us20.list-manage.com/subscribe/post?u=60e1ffe2e8a68ce1204cd39a5&amp;id=42d6d188d9", // Your url MailChimp
 		// 	callback: callbackFunction
         // });

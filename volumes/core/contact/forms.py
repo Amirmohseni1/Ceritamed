@@ -1,79 +1,42 @@
 from django import forms
 from phonenumber_field.widgets import PhoneNumberPrefixWidget
 
-from .models import Form, ContactUsForm
+from .models import Consultation, ContactUs, Newsletters
 
 
-class ContactUsForms(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        for field in self.Meta.required:
-            self.fields[field].required = True
-
+class ContactUsModelForms(forms.ModelForm):
     class Meta:
-        model = ContactUsForm
-        fields = ('full_name', 'email', 'subject', 'text')
-        required = ('full_name', 'email', 'subject', 'text')
+        model = ContactUs
+        fields = ('title', 'email', 'subject', 'body')
         widgets = {
-            'full_name': forms.TextInput(attrs={"placeholder": "يرجى إدخال إسمك", "class": "form-control"}),
-            'text': forms.Textarea(attrs={"placeholder": "يرجى إدخال الوصف الخاص بك", "class": "form-control"}),
-            'email': forms.EmailInput(attrs={"placeholder": "يرجى إدخال بريدك الإلكتروني", "class": "form-control"}),
-            'subject': forms.TextInput(attrs={"placeholder": "الرجاء إدخال موضوعك", "class": "form-control"}),
+            'title': forms.TextInput(attrs={"placeholder": "Your name", "class": "contact-control"}),
+            'body': forms.Textarea(attrs={"placeholder": "Text", "class": "contact-control"}),
+            'email': forms.EmailInput(attrs={"placeholder": "Email", "class": "contact-control"}),
+            'subject': forms.TextInput(attrs={"placeholder": "Subject", "class": "contact-control"}),
         }
 
 
-class Form1(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        for field in self.Meta.required:
-            self.fields[field].required = True
-
+class ConsultationModelForm(forms.ModelForm):
     class Meta:
-        model = Form
-        fields = ('full_name', 'text', 'where', 'phone')
-        required = ('full_name', 'text', 'phone',)
+        model = Consultation
+        fields = ('title', 'body', 'source', 'phone')
         widgets = {
-            'full_name': forms.TextInput(attrs={"placeholder": "يرجى إدخال إسمك"}),
-            'text': forms.Textarea(attrs={"placeholder": "يرجى إدخال الوصف الخاص بك", "rows": "4"}),
-            'phone': PhoneNumberPrefixWidget(attrs={"placeholder": "يرجى إدخال رقمك", "class": "form-control"}),
-            'where': forms.HiddenInput(),
+            'title': forms.TextInput(attrs={"placeholder": "Your name"}),
+            'body': forms.Textarea(attrs={"placeholder": "Text", "rows": "4"}),
+            'phone': PhoneNumberPrefixWidget(attrs={"placeholder": "Your Number", "class": "contact-control"}),
+            'source': forms.HiddenInput(),
         }
         labels = {
-            'full_name': ('إسمك'),
-            'text': ('رسالتك'),
+            'title': ('Your name'),
+            'body': ('Text'),
             'phone': ('Whatsapp'),
         }
 
 
-class Form2(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        for field in self.Meta.required:
-            self.fields[field].required = True
-
+class NewsLettersForm(forms.ModelForm):
     class Meta:
-        model = Form
-        fields = ('full_name', 'text', 'where', 'phone', 'email')
-        required = ('full_name', 'text', 'phone', 'email')
+        model = Newsletters
+        fields = ('email',)
         widgets = {
-            'full_name': forms.TextInput(attrs={"placeholder": "يرجى إدخال إسمك"}),
-            'text': forms.Textarea(attrs={"placeholder": "يرجى إدخال الوصف الخاص بك", "rows": "4"}),
-            'phone': PhoneNumberPrefixWidget(attrs={"placeholder": "يرجى إدخال رقمك", "class": "form-control"}),
-            'email': forms.EmailInput(attrs={"placeholder": "يرجى إدخال بريدك الإلكتروني", "class": "form-control"}),
-            'where': forms.HiddenInput(),
+            'email': forms.EmailInput(attrs={"placeholder": "Pleas write your EMAIL", "class": "input-newsletter"})
         }
-        labels = {
-            'full_name': ('إسمك'),
-            'text': ('رسالتك'),
-            'phone': ('Whatsapp'),
-            'email': ('البريد الألكتروني'),
-        }
-
-
-class NewsLettersForm(forms.Form):
-    email = forms.EmailField(
-        widget=forms.EmailInput(attrs={"placeholder": "يرجى إدخال بريدك الإلكتروني", "class": "input-newsletter"}),
-    )

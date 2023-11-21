@@ -72,35 +72,15 @@
                     <a class="navbar-brand" href="{% url 'Home:Index' %}">
                         <img src="{% static 'img/logo.png' %}" alt="logo" id="logo">
                     </a>
-
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
-
-                        {% with request.resolver_match.url_name as url_name %}
-
-                            <ul class="navbar-nav">
-
-                                <li class="nav-item"><a href="{% url "Home:Index" %}"
-                                                        class="nav-link {% if url_name == 'Home:Index' %}active{% endif %}">الصفحة
-                                    الأصلية</a></li>
-
-                                <li class="nav-item"><a href="{% url 'Services_Category' %}"
-                                                        class="nav-link {% if url_name == 'Services_Category' %}active{% endif %}">الخدمات</a>
-                                </li>
-                                <li class="nav-item"><a href="{% url 'Doctors_list' %}"
-                                                        class="nav-link {% if url_name == 'Doctors_list' %}active{% endif %}">الأطباء</a>
-                                </li>
-                                <li class="nav-item"><a href="{% url 'Article:List' %}"
-                                                        class="nav-link {% if url_name == 'Article:List' %}active{% endif %}">المدونات</a>
-                                </li>
-
-                                <li class="nav-item"><a href="{% url 'Home:Contact-Us' %}"
-                                                        class="nav-link {% if url_name == 'Home:Contact-Us' %}active{% endif %}">الإتصال
-                                    بنا</a></li>
-                                <li class="nav-item"><a href="{% url "Home:About-Us" %}"
-                                                        class="nav-link {% if url_name == 'Home:About-Us' %}active{% endif %}">معلومات
-                                    عنا</a></li>
-                            </ul>
-                        {% endwith %}
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a href="{% url "Home:Index" %}" class="nav-link">الصفحة الأصلية</a></li>
+                            <li class="nav-item"><a href="{% url 'Service:Categories' %}" class="nav-link">الخدمات</a></li>
+                            <li class="nav-item"><a href="{% url 'Doctor:List' %}" class="nav-link">الأطباء</a></li>
+                            <li class="nav-item"><a href="{% url 'Article:List' %}" class="nav-link">المدونات</a></li>
+                            <li class="nav-item"><a href="{% url 'Home:Contact-Us' %}" class="nav-link">الإتصال بنا</a></li>
+                            <li class="nav-item"><a href="{% url "Home:About-Us" %}" class="nav-link">معلومات عنا</a></li>
+                        </ul>
                     </div>
                 </nav>
             </div>
