@@ -10,9 +10,9 @@ register = template.Library()
 @register.inclusion_tag('share/footer.html', takes_context=True)
 def footer(context):
     request = context['request']
-    blog_data = Article.objects.get_queryset().filter(is_active=True).order_by('-id')[:6]
-    service_data = Service.object.get_queryset().filter(active=True).order_by('-id')[:6]
-    service_category_data = ServiceCategory.objects.get_queryset().all().order_by('-id')[:6]
+    blog_data = Article.objects.all()
+    service_data = Service.objects.all()
+    service_category_data = ServiceCategory.objects.all()
 
     news_letter_form = NewsLettersForm(request.POST or None)
     if news_letter_form.is_valid():

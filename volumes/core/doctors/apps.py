@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CeritamedDoctorsConfig(AppConfig):
+class DoctorsConfig(AppConfig):
     name = 'doctors'
     verbose_name = "پزشکان"

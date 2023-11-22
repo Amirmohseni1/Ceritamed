@@ -13,19 +13,16 @@ from .managers import ArticleManager, ArticleCategoryManager
 
 class Article(AuditableModel, StatusModel, SeoModel):
     img = models.ImageField(verbose_name=_('Image'), upload_to='articles', null=True, blank=True)
-    img_thumbnail_Big = ImageSpecField(source='img', processors=[ResizeToFill(700, 400)], format='WEBP',
-                                       options={'quality': 80})
-    img_thumbnail_medium = ImageSpecField(source='img', processors=[ResizeToFill(350, 200)], format='WEBP',
-                                          options={'quality': 80})
-    img_thumbnail_small = ImageSpecField(source='img', processors=[ResizeToFill(80, 80)], format='WEBP',
-                                         options={'quality': 90})
     tag = models.ManyToManyField(verbose_name=_('tags'), to='ArticleTag', db_index=True)
     body = RichTextUploadingField(verbose_name=_('Body'))
-    category = models.ManyToManyField(verbose_name=_('category'), to='ArticleCategory', db_index=True,
-                                      related_name='Categories')
-    doctor = models.ForeignKey(DoctorExpertise, verbose_name="پزشک های مرتبط", on_delete=models.CASCADE, null=True,
-                               blank=True, related_name='Doctor_Expertiseee')
+    category = models.ManyToManyField(verbose_name=_('category'), to='ArticleCategory', db_index=True, related_name='Categories')
+    doctor = models.ForeignKey(DoctorExpertise, verbose_name="پزشک های مرتبط", on_delete=models.CASCADE, null=True, blank=True, related_name='Doctor_Expertiseee')
     visit = models.IntegerField(verbose_name=_('Visits'), editable=False, default=0)
+
+    # Article images different size
+    img_thumbnail_Big = ImageSpecField(source='img', processors=[ResizeToFill(700, 400)], format='WEBP', options={'quality': 80})
+    img_thumbnail_medium = ImageSpecField(source='img', processors=[ResizeToFill(350, 200)], format='WEBP', options={'quality': 80})
+    img_thumbnail_small = ImageSpecField(source='img', processors=[ResizeToFill(80, 80)], format='WEBP', options={'quality': 90})
 
     objects = models.Manager()
     custom_objects = ArticleManager()

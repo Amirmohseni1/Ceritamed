@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CeritamedAdditionalFeaturesConfig(AppConfig):
+class SettingsConfig(AppConfig):
     name = 'settings'
     verbose_name = "ماژول های سایت"
