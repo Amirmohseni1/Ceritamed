@@ -31,8 +31,7 @@
                 <div class="row">
                     <div class="col-lg-7 col-md-12">
                         <div class="contact-form">
-                            <form  method="post" novalidate>
-
+                            <form  method="post">
                                 {% csrf_token %}
                                     {% if messages %}
                                     <div class="alert alert-success">
@@ -44,27 +43,25 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group">
-                                            {{ contact_us_form.full_name }}
+                                            {{ form.title }}
                                             <div class="help-block with-errors ">{% for errors in contact_us_form.full_name.errors %}<p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}</div>
                                         </div>
                                     </div>
-
                                     <div class="col-lg-6 col-md-6">
                                         <div class="form-group has-error">
-                                            {{ contact_us_form.email }}
+                                            {{ form.email }}
                                             <div class="help-block with-errors">{% for errors in contact_us_form.email.errors %}<p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}</div>
                                         </div>
                                     </div>
                                     <div class="col-lg-12 col-md-12">
                                         <div class="form-group">
-                                            {{ contact_us_form.subject }}
+                                            {{ form.subject }}
                                             <div class="help-block with-errors">{% for errors in contact_us_form.subject.errors %}<p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}</div>
                                         </div>
                                     </div>
-
                                     <div class="col-lg-12 col-md-12">
                                         <div class="form-group">
-                                            {{ contact_us_form.text }}
+                                            {{ form.body }}
                                             <div class="help-block with-errors">{% for errors in contact_us_form.text.errors %}<p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}</div>
                                         </div>
                                     </div>
