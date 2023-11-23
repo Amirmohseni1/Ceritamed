@@ -1,23 +1,17 @@
 from django.contrib import admin
-from .models import Doctor, DoctorExpertise, DoctorEvidence
+from .models import Doctor, DoctorExpertise, DoctorEducation
 
 
-# Register your models here.
-
-# --------------------------------------------------- Doctors --------------------------------------------------------
-
-class DoctorsAdmin(admin.ModelAdmin):
-    list_display = ('doctor_name', 'home_page', 'active')
-    list_filter = ('home_page', 'active')
-    search_fields = ('doctor_name', 'slug')
+@admin.register(Doctor)
+class DoctorAdmin(admin.ModelAdmin):
+    pass
 
 
-admin.site.register(Doctor, DoctorsAdmin)
+@admin.register(DoctorEducation)
+class DoctorEducationAdmin(admin.ModelAdmin):
+    pass
 
-# --------------------------------------------------- Doctor Expertise --------------------------------------------------------
 
-admin.site.register(DoctorExpertise)
-
-# --------------------------------------------------- Doctor Evidence --------------------------------------------------------
-
-admin.site.register(DoctorEvidence)
+@admin.register(DoctorExpertise)
+class DoctorExpertiseAdmin(admin.ModelAdmin):
+    pass

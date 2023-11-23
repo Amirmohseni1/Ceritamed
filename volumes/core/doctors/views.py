@@ -1,8 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
-from django.contrib import messages
 
-# from forms.forms import DoctorsPageForm
 from .models import Doctor
 
 

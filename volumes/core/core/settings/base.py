@@ -101,7 +101,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 
-LANGUAGE_CODE = 'fa-IR'
+LANGUAGE_CODE = 'en-US'
 
 TIME_ZONE = 'UTC'
 
