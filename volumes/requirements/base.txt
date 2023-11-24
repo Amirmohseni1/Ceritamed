@@ -1,5 +1,5 @@
 # Base frameworks
-Django==3.1
+Django
 
 # Database apps
 psycopg
@@ -7,13 +7,12 @@ psycopg2-binary
 
 # image & files apps
 Pillow
-django-imagekit
+sorl-thumbnail
 
 #template apps
 django-compressor
 cssmin
 jsmin
-django-crispy-forms==1.9.2
 
 # Model tool apps
 django-phone-field

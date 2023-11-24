@@ -28,11 +28,9 @@ INSTALLED_APPS = [
     'settings',
     'home',
     # external apps
-    'imagekit',
     'ckeditor',
     'ckeditor_uploader',
     'phone_field',
-    'crispy_forms',
     'phonenumber_field',
 ]
 
