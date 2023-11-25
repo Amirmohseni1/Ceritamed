@@ -7,19 +7,16 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-12">
                     <div class="newsletter-content">
-                        <h2>إشتركوا في النشرات الإخبارية الخاصة بنا</h2>
-                        <p>إشتركوا في النشرات الإخبارية الخاصة بنا لتكونوا مطلعين على جميع التخفيضات و الخدمات الجديدة
-                            في سريتامد</p>
+                        <h2>Join Our Newsletter</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12">
-                    <form class="newsletter-form" data-toggle="validator" method="post">
-                        {% csrf_token %}
-                        {{ Forms.email }}
-                        <div class="help-block with-errors">{% for errors in Forms.email.errors %}
-                            <p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}</div>
 
-                        <button type="submit">الإشتراك<i class="fas fa-paper-plane"></i></button>
+                <div class="col-lg-6 col-md-12">
+                    <form class="newsletter-form" data-toggle="validator">
+                        <input type="email" class="input-newsletter" placeholder="Enter your email" name="EMAIL" required autocomplete="off">
+
+                        <button type="submit">Subscribe <i class="fas fa-paper-plane"></i></button>
                         <div id="validator-newsletter" class="form-result"></div>
                     </form>
                 </div>
@@ -30,71 +27,66 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-footer-widget">
                     <div class="logo">
-                        <a href="#"><img src="{% static 'img/white-logo.png' %}" alt="image"></a>
-                        <p class="text-justify">سريتامد هي من الشركات الرائدة في إيران والمختصصة في مجال السياحة
-                            العلاجية، من خلال تقديم كافة الخدمات للسياح الأجانب بأفضل الأسعار وجودة عالية.</p>
+                        <a href="#"><img src="assets/img/white-logo.png" alt="image"></a>
+                        <p>Powerfully flexible html template for medical & health related organizations, institutes, clinics and businesses.</p>
                     </div>
 
                     <ul class="social">
-                        <li><a rel="noreferrer" href="https://www.facebook.com/ceritamed.arb" target="_blank"><i
-                                class="fab fa-facebook-f pt-2"></i></a></li>
-                        <li><a rel="noreferrer" href="https://wa.me/+989377974625"
-                               target="_blank"><i class="fab fa-whatsapp pt-2"></i></a></li>
-                        <li><a rel="noreferrer" target="_blank" href="https://twitter.com/ceritamedar"><i
-                                class="fab fa-twitter pt-2"></i></a></li>
-                        <li><a rel="noreferrer" href="https://www.instagram.com/ceritamed.arb" target="_blank"><i
-                                class="fab fa-instagram pt-2"></i></a></li>
-                        <li><a rel="noreferrer" href="https://www.linkedin.com/company/ceritamed" target="_blank"><i
-                                class="fab fa-linkedin pt-2"></i></a></li>
-                        <li><a rel="noreferrer" href="https://www.youtube.com/channel/UCFTvt9iZODx6rpGZv9DM2cQ" target="_blank"><i
-                                class="fab fa-youtube pt-2"></i></a></li>
+                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-footer-widget pl-5">
-                    <h3>أحدث المدونات</h3>
+                    <h3>Departments</h3>
 
                     <ul class="departments-list">
-
-                        {% for title in blog %}
-                            <li><a href="{{ title.get_absolute_url }}">{{ title.h1 }}</a></li>
-                        {% endfor %}
-
+                        <li><a href="#">Surgery and Radiology</a></li>
+                        <li><a href="#">Departments</a></li>
+                        <li><a href="#">Family</a></li>
+                        <li><a href="#">Our Doctors</a></li>
+                        <li><a href="#">Woman's Health</a></li>
+                        <li><a href="#">Blog</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-footer-widget pl-5">
-                    <h3>الخدمات</h3>
+                    <h3>Links</h3>
 
                     <ul class="links-list">
-                        {% for title in Servise %}
-                            <li><a href="{{ title.get_absolute_url }}">{{ title.title }}</a></li>
-                        {% endfor %}
+                        <li><a href="#">Optician</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Pediatrics</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Dermatology</a></li>
+                        <li><a href="#">Doctors</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="single-footer-widget pl-5">
-                    <h3>تقسيم الخدمات</h3>
+                <div class="single-footer-widget">
+                    <h3>Opening Hours</h3>
 
-                    <ul class="links-list">
-                        {% for title in ServiseCategory %}
-                            <li><a href="{{ title.get_absolute_url }}">{{ title.title }}</a></li>
-                        {% endfor %}
+                    <ul class="opening-hours">
+                        <li>Mon - Tues <span>9.00AM - 17.00PM</span></li>
+                        <li>Wednesday <span>9.00AM - 17.00PM</span></li>
+                        <li>Thursday <span>9.00AM - 17.00PM</span></li>
+                        <li>Friday <span>9.00AM - 17.00PM</span></li>
+                        <li>Saturday <span>Closed</span></li>
                     </ul>
                 </div>
             </div>
         </div>
 
         <div class="copyright-area">
-            <p>حقوق النشر ۱۳۹۹<i class="far fa-copyright"></i>جمیع حقوق الحزمة محفوظة-تم التصمیم والتطویر بواسطة فریق
-                سریتامد
-            </p>
+            <p>© Fovia is Proudly Owned by <a href="https://envytheme.com/" target="_blank">EnvyTheme</a></p>
         </div>
     </div>
 </section>

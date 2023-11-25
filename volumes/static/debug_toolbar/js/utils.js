@@ -93,7 +93,7 @@ function ajax(url, init) {
 }
 
 function ajaxForm(element) {
-    const form = element.closest("contact");
+    const form = element.closest("form");
     const url = new URL(form.action);
     const formData = new FormData(form);
     for (const [name, value] of formData.entries()) {

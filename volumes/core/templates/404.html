@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block content %}
-
         <!-- Start Error Area -->
 		<section class="error-area">
             <div class="d-table">
@@ -10,11 +9,11 @@
                     <div class="container">
                         <div class="error-content">
                             <img src="{% static 'img/404.png' %}" alt="error">
-        
-                            <h3>لم یتم العثور علی الصفحة</h3>
-                            <p>الصفحة المطلوبة يمكن أن تكون محذوفة ، خارجة عن النطاق بشكل مؤقت أو قد تم تغیير إسمها.</p>
-        
-                            <a href="{% url 'Home:Index' %}" class="btn btn-primary">العودة إلى الصفحة الرئيسية<i class="flaticon-left-chevron"></i></a>
+
+                            <h3>Page Not Found</h3>
+                            <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+
+                            <a href="{% url 'Home:Index' %}" class="btn btn-primary">Go to Home <i class="flaticon-right-chevron"></i></a>
                         </div>
                     </div>
                 </div>

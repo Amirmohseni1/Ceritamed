@@ -6,7 +6,7 @@
     font-size: 13px;
   }
   .btn {
-padding: 15px 25px 13.5px 50px;
+    padding: 15px 50px 13.5px 25px;
     font-size: 13px;
   }
   .ptb-100 {
@@ -63,6 +63,12 @@ padding: 15px 25px 13.5px 50px;
   }
   .header-right-content .lang-select .nice-select {
     font-size: 14px;
+  }
+  .mean-container a.meanmenu-reveal span {
+    background-color: #272b2b;
+    position: relative;
+    top: 8px;
+    margin-top: -7px;
   }
   .main-banner {
     height: 100%;
@@ -363,14 +369,14 @@ padding: 15px 25px 13.5px 50px;
     line-height: 40px;
     font-size: 16px;
     position: relative;
-right: 40px;
+    left: 0;
     top: 0;
     -webkit-transform: translateY(0);
             transform: translateY(0);
     margin: 0 4px;
   }
   .doctor-slides.owl-theme .owl-nav [class*=owl-].owl-next {
-left: -40px;
+    right: 0;
   }
   .doctor-details-image {
     padding: 25px;
@@ -547,8 +553,6 @@ left: -40px;
     right: 0 !important;
     margin: 15px 2px 0;
   }
-
-
   .doctor-calendar-table table thead tr th {
     font-size: 15px;
   }
@@ -798,7 +802,6 @@ left: -40px;
     margin-bottom: 15px;
   }
   .woocommerce-topbar .woocommerce-result-count p {
-text-align: center;
     font-size: 14px;
   }
   .woocommerce-topbar .woocommerce-topbar-ordering {
@@ -835,11 +838,11 @@ text-align: center;
     font-size: 13px;
     padding-top: 13px;
     padding-bottom: 13px;
-padding-left: 20px;
-padding-right: 40px;
+    padding-right: 20px;
+    padding-left: 40px;
   }
   .products-details-tab .tabs li a .dot {
-right: 20px;
+    left: 20px;
   }
   .products-details-tab .tab_content {
     padding: 20px;
@@ -985,16 +988,15 @@ right: 20px;
   }
   .newsletter-form .input-newsletter {
     height: 55px;
-padding-left: 0;
-padding-right: 15px;
+    padding-right: 0;
+    padding-left: 15px;
     font-size: 15px;
-text-align: right;
   }
   .newsletter-form button {
     position: relative;
-left: 0;
+    right: 0;
     top: 0;
-padding: 19px 25px 16px 50px;
+    padding: 19px 50px 16px 25px;
     height: auto;
     font-size: 14px;
     margin-top: 15px;
@@ -1038,7 +1040,7 @@ padding: 19px 25px 16px 50px;
     display: inline-block;
   }
   .main-banner-content .btn-box .btn {
-padding: 15px 25px 13.5px 50px;
+    padding: 15px 50px 13.5px 25px;
     font-size: 13px;
   }
   .main-banner-content .btn-box .btn i {
@@ -1112,9 +1114,9 @@ padding: 15px 25px 13.5px 50px;
   }
   .newsletter-form button {
     position: absolute;
-left: 2.4px;
+    right: 2.4px;
     top: 2.4px;
-padding: 0 25px 0 50px;
+    padding: 0 50px 0 25px;
     height: 50px;
     margin-top: 0;
     display: inline-block;
@@ -1167,6 +1169,12 @@ padding: 0 25px 0 50px;
   .fovia-responsive-nav .others-options .option-item {
     display: inline-block;
   }
+  .mean-container a.meanmenu-reveal span {
+    background-color: #272b2b;
+    position: relative;
+    top: 8px;
+    margin-top: -7px;
+  }
   .main-banner {
     height: 100%;
     padding-top: 120px;
@@ -1193,7 +1201,7 @@ padding: 0 25px 0 50px;
   }
   .home-slides.owl-theme .owl-nav {
     position: absolute;
-left: 5px;
+    right: 5px;
     bottom: 10px;
     opacity: 1;
     visibility: visible;
@@ -1204,12 +1212,12 @@ left: 5px;
     -webkit-transform: translateY(0);
             transform: translateY(0);
     bottom: 0;
-left: -60px;
+    left: 0;
     margin: 0 5px;
     z-index: 2;
   }
   .home-slides.owl-theme .owl-nav [class*=owl-].owl-next {
-right: -60px;
+    right: 0;
   }
   .main-services-area {
     padding-bottom: 40px;
@@ -1331,14 +1339,14 @@ right: -60px;
     line-height: 40px;
     font-size: 16px;
     position: relative;
-right: 40px;
+    left: 0;
     top: 0;
     -webkit-transform: translateY(0);
             transform: translateY(0);
     margin: 0 4px;
   }
   .doctor-slides.owl-theme .owl-nav [class*=owl-].owl-next {
-left: -40px;
+    right: 0;
   }
   .doctor-details-desc {
     text-align: center;
@@ -1541,10 +1549,19 @@ left: -40px;
 
 @media only screen and (min-width: 1199px) and (max-width: 1280px) {
   .doctor-slides.owl-theme .owl-nav [class*=owl-] {
-     left: -35px;
+    left: -35px;
   }
   .doctor-slides.owl-theme .owl-nav [class*=owl-].owl-next {
-     right: -35px;
+    right: -35px;
+  }
+}
+
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .our-mission-content {
+    max-width: 550px;
+  }
+  .approach-content {
+    max-width: 550px;
   }
 }
 /*# sourceMappingURL=responsive.css.map */

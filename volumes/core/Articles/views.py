@@ -26,8 +26,9 @@ class ArticleDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
-        context['similar_articles'] = Article.custom_objects.get_active_list().filter(category=self.object.category)[:5]
-        context['doctors'] = Doctor.objects.filter(doctor_expertise=self.object.doctor)
+        # context['similar_articles'] = Article.custom_objects.get_active_list().filter(category=self.object.category)[:5]
+        # context['doctors'] = Doctor.objects.filter(doctor_expertise=self.object.doctor)
+        return context
 
     # posts_comments = post_detail.comments.get_queryset().filter(active=True).order_by('id')
     # created_comment = ArticleCommentModelForm(request.POST or None)

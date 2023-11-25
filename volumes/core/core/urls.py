@@ -27,8 +27,8 @@ urlpatterns = [
     path('article/', include("Articles.urls", namespace='Article')),
     path('service/', include("services.urls"), name='Service'),
     path('doctor/', include("doctors.urls"), name='Doctor'),
-    path('ckeditor', include("ckeditor_uploader.urls")),
     path('admin/', admin.site.urls),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
 ] + sitemap
 
 if settings.DEBUG:

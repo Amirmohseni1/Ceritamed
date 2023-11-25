@@ -22,30 +22,30 @@
             <div class="row align-items-center">
                 <div class="col-lg-8">
                     <ul class="header-contact-info">
-                        <li><i class="fas fa-phone"></i>إتصلوا: <a
-                                href="https://wa.me/+989377974625">9377974625-0098</a></li>
-                        <li><i class="far fa-paper-plane"></i> <a href="mailto:info@ceritamed.com">
-                            Info@ceritamed.com</a></li>
+                        <li><i class="far fa-clock"></i> Mon - Fri 09:00 - 19:00</li>
+                        <li><i class="fas fa-phone"></i> Call Us: <a href="#">+07 554 332 322</a></li>
+                        <li><i class="far fa-paper-plane"></i> <a href="#"><span class="__cf_email__" data-cfemail="3e5b535f57525b465f534e525b7e4b4c505f535b105d5153">emailexample@urname.com</span></a>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="col-lg-4">
                     <div class="header-right-content">
                         <ul class="top-header-social">
-                            <li><a rel="noreferrer" href="https://www.facebook.com/ceritamed.arb" target="_blank"><i
-                                    class="fab fa-facebook-f pt-2"></i></a></li>
-                            <li><a rel="noreferrer" href="https://wa.me/+989377974625" target="_blank"><i
-                                    class="fab fa-whatsapp pt-2"></i></a></li>
-                            <li><a rel="noreferrer" target="_blank" href="https://twitter.com/ceritamedar"><i
-                                    class="fab fa-twitter pt-2"></i></a></li>
-                            <li><a rel="noreferrer" href="https://www.instagram.com/ceritamed.arb" target="_blank"><i
-                                    class="fab fa-instagram pt-2"></i></a></li>
-                            <li><a rel="noreferrer" href="https://www.linkedin.com/company/ceritamed" target="_blank"><i
-                                    class="fab fa-linkedin pt-2"></i></a></li>
-                            <li><a rel="noreferrer" href="https://www.youtube.com/channel/UCFTvt9iZODx6rpGZv9DM2cQ" target="_blank"><i
-                                    class="fab fa-youtube pt-2"></i></a></li>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                         </ul>
 
+                        <div class="lang-select">
+                            <select>
+                                <option>Eng</option>
+                                <option>Spa</option>
+                                <option>Ara</option>
+                                <option>Fre</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -58,8 +58,8 @@
             <div class="container">
                 <div class="fovia-responsive-menu">
                     <div class="logo">
-                        <a href="{% url 'Home:Index' %}">
-                            <img src="{% static 'img/logo.png' %}" alt="logo" id="logo">
+                        <a href="index.html">
+                            <img src="assets/img/logo.png" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -69,18 +69,92 @@
         <div class="fovia-nav">
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="{% url 'Home:Index' %}">
-                        <img src="{% static 'img/logo.png' %}" alt="logo" id="logo">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="assets/img/logo.png" alt="logo">
                     </a>
+
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a href="{% url "Home:Index" %}" class="nav-link">الصفحة الأصلية</a></li>
-                            <li class="nav-item"><a href="{% url 'Service:Categories' %}" class="nav-link">الخدمات</a></li>
-                            <li class="nav-item"><a href="{% url 'Doctor:List' %}" class="nav-link">الأطباء</a></li>
-                            <li class="nav-item"><a href="{% url 'Article:List' %}" class="nav-link">المدونات</a></li>
-                            <li class="nav-item"><a href="{% url 'Home:Contact-Us' %}" class="nav-link">الإتصال بنا</a></li>
-                            <li class="nav-item"><a href="{% url "Home:About-Us" %}" class="nav-link">معلومات عنا</a></li>
+                            <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+
+                            <li class="nav-item"><a href="#" class="nav-link">Department <i class="fas fa-plus"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a href="services-1.html" class="nav-link">Department 01</a></li>
+
+                                    <li class="nav-item"><a href="services-2.html" class="nav-link">Department 02</a></li>
+
+                                    <li class="nav-item"><a href="single-services.html" class="nav-link">Department Details</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item"><a href="#" class="nav-link">Doctor <i class="fas fa-plus"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a href="doctor.html" class="nav-link">Doctor</a></li>
+
+                                    <li class="nav-item"><a href="doctor-details.html" class="nav-link">Doctor Details</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item"><a href="#" class="nav-link">Shop <i class="fas fa-plus"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a href="shop.html" class="nav-link">Shop</a></li>
+
+                                    <li class="nav-item"><a href="single-product.html" class="nav-link">Single Products</a></li>
+
+                                    <li class="nav-item"><a href="cart.html" class="nav-link">Cart</a></li>
+
+                                    <li class="nav-item"><a href="checkout.html" class="nav-link">Checkout</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item"><a href="#" class="nav-link">Blog <i class="fas fa-plus"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a href="blog-1.html" class="nav-link">Blog Grid</a></li>
+
+                                    <li class="nav-item"><a href="blog-2.html" class="nav-link">Blog Right Sidebar</a></li>
+
+                                    <li class="nav-item"><a href="single-blog.html" class="nav-link">Blog Details</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item"><a href="#" class="nav-link">Pages <i class="fas fa-plus"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+
+                                    <li class="nav-item"><a href="appointment.html" class="nav-link">Appointment</a></li>
+
+                                    <li class="nav-item"><a href="timetable.html" class="nav-link">Time Table</a></li>
+
+                                    <li class="nav-item"><a href="partner.html" class="nav-link">Partner</a></li>
+
+                                    <li class="nav-item"><a href="error-404.html" class="nav-link">404 Error</a></li>
+
+                                    <li class="nav-item"><a href="faq.html" class="nav-link">FAQ</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
                         </ul>
+
+                        <div class="others-options">
+                            <a href="cart.html" class="cart-btn"><i class="flaticon-shopping-bag"></i></a>
+
+                            <div class="option-item"><i class="search-btn fas fa-search"></i>
+                                <i class="search-close-btn fas fa-times"></i>
+
+                                <div class="search-overlay search-popup">
+                                    <div class='search-box'>
+                                        <form class="search-form">
+                                            <input class="search-input" name="search" placeholder="Search" type="text">
+
+                                            <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a href="contact.html" class="btn btn-primary">Contact Us</a>
+                        </div>
                     </div>
                 </nav>
             </div>
@@ -89,3 +163,4 @@
     <!-- End Navbar Area -->
 </header>
 <!-- End Header Area -->
+

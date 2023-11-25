@@ -3366,7 +3366,7 @@ jQuery.extend({
 		url: location.href,
 		global: true,
 		type: "GET",
-		contentType: "application/x-www-contact-urlencoded",
+		contentType: "application/x-www-form-urlencoded",
 		processData: true,
 		async: true,
 		/*
@@ -3728,7 +3728,7 @@ jQuery.extend({
 		return data;
 	},
 
-	// Serialize an array of contact elements or a set of
+	// Serialize an array of form elements or a set of
 	// key/values into a query string
 	param: function( a ) {
 		var s = [ ];
@@ -3738,9 +3738,9 @@ jQuery.extend({
 		};
 
 		// If an array was passed in, assume that it is an array
-		// of contact elements
+		// of form elements
 		if ( jQuery.isArray(a) || a.jquery )
-			// Serialize the contact elements
+			// Serialize the form elements
 			jQuery.each( a, function(){
 				add( this.name, this.value );
 			});

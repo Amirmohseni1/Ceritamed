@@ -425,7 +425,7 @@ module.exports = function(XRegExp) {
     // Storage for Unicode data
     var unicode = {};
 
-    // Reuse libs
+    // Reuse utils
     var dec = XRegExp._dec;
     var hex = XRegExp._hex;
     var pad4 = XRegExp._pad4;
@@ -544,7 +544,7 @@ module.exports = function(XRegExp) {
                 throw new SyntaxError(ERR_UNKNOWN_NAME + match[0]);
             }
 
-            // Switch to the negated contact of the referenced Unicode token
+            // Switch to the negated form of the referenced Unicode token
             if (item.inverseOf) {
                 slug = normalize(item.inverseOf);
                 if (!unicode.hasOwnProperty(slug)) {

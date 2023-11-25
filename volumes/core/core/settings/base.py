@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     # external apps
     'ckeditor',
     'ckeditor_uploader',
+    'sorl.thumbnail',
     'phone_field',
     'phonenumber_field',
 ]
@@ -60,7 +61,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request'
+                'django.template.context_processors.request',
+                # custom context processors
+                'settings.views.setting',
             ],
         },
     },
@@ -111,31 +114,7 @@ USE_TZ = True
 
 # ckeditor conf
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': [
-            ['Source', '-', 'Save', 'NewPage', 'ExportPdf', 'Preview', 'Print', '-', 'Templates'],
-            ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'],
-            ['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt'],
-            ['Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'],
-            '/',
-            ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'CopyFormatting',
-             'RemoveFormat'],
-            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-             'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl', 'Language'],
-            ['Link', 'Unlink', 'Anchor'],
-            ['Image', 'youtube', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', 'Iframe'],
-            '/',
-            ['Styles', 'Format', 'Font', 'FontSize'],
-            ['TextColor', 'BGColor'],
-            ['Maximize', 'ShowBlocks', 'Youtube'],
-        ],
-        'extraPlugins': ','.join(['youtube', ]),
-        'height': 400,
-        'width': 1200,
-    },
-}
-CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 # statics conf
 

@@ -1,228 +1,486 @@
 {% extends "base_layout.html" %}
 {% load static %}
+{% load thumbnail %}
 
 {% block Meta %}
     <meta name="keywords" content="{% for article in article.tag.all %}{{ post }} , {% endfor %}">
-    <meta name="description" content="{{ article.description }}">
+    <meta name="description" content="{{ article.meta_description }}">
     <meta name="author" content="{{ article.created_by }}">
     <meta name="owner" content="{{ article.created_by }}">
     <meta property="article:published_time" content="{{ article.created_at }}">
     <meta property="article:modified_time" content="{{ article.modified_at }}">
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="{{ article.title }}"/>
-    <meta property="og:description" content="{{ article.description }}"/>
-    <meta property="og:image" content="https://ceritamed.com{{ article.img_thumbnail_Big.url }}"/>
+    <meta property="og:description" content="{{ article.meta_description }}"/>
+    <meta property="og:image" content="https://ceritamed.com{{ article.image.url }}"/>
     <meta property="og:image:type" content="image/jpg">
-    <meta property="og:image:url" content="https://ceritamed.com{{ article.img_thumbnail_Big.url }}">
+    <meta property="og:image:url" content="https://ceritamed.com{{ article.image.url }}">
     <meta property="og:url" content="https://ceritamed.com{{ request.get_full_path }}"/>
     <meta property="og:site_name" content="{{ setting.title }}"/>
     <meta name="twitter:title" content="{{ article.title }}">
-    <meta name="twitter:description" content="{{ article.description }}">
-    <meta name="twitter:image" content="https://ceritamed.com{{ article.img_thumbnail_Big.url }}">
+    <meta name="twitter:description" content="{{ article.meta_description }}">
+    <meta name="twitter:image" content="https://ceritamed.com{{ article.image.url }}">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://ceritamed.com{{ request.get_full_path }}"/>
-
-
 {% endblock %}
 
 {% block title %} | {{ article.title }}{% endblock %}
 
 {% block content %}
+    <!-- Start Page Title Area -->
+    <section class="page-title-area page-title-bg2">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="page-title-content">
+                        <h2>Blog Details</h2>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li>Blog Details</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Page Title Area -->
+
+    <!-- Start Blog Details Area -->
     <section class="blog-details-area ptb-100">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-md-12 ">
-                    <div class="blog-details-desc ">
-                        <div class=" p-3 blog-shadow">
-                            <div class="article-image">
-                                <h1 class="font-weight-bold my-2" style="font-size: 2em">{{ article.title }}</h1>
-                                <img src="{{ article.img_thumbnail_Big.url }}" alt="{{ blog_ditail.title }}">
+                <div class="col-lg-8 col-md-12">
+                    <div class="blog-details-desc">
+                        <div class="article-image">
+                            <img src="assets/img/blog/3.jpg" alt="image">
+                        </div>
+
+                        <div class="article-content">
+                            <div class="entry-meta">
+                                <ul>
+                                    <li><span>Posted On:</span> <a href="#">September 31, 2021</a></li>
+                                    <li><span>Posted By:</span> <a href="#">John Anderson</a></li>
+                                </ul>
                             </div>
 
-                            <div class="article-content">
-                                <div class="entry-meta">
-                                    <ul>
-                                        <li><span>كتبت في:</span> <a>{{ article.created_at }}</a></li>
-                                        <li><span>مقدم من:</span> <a href="{% url 'About-us' %}">Content production team {{ setting.title }}</a></li>
-                                    </ul>
-                                </div>
-                                <div class="mt-4 text-justify content custom-descriptions-css">
-                                    {{ article.body | safe }}
-                                    <div class="container ">
-                                        <div class="row py-3 align-items-center text-center">
-                                            <div class="col-md-3 ">
-                                                <div class="btn-box d-none d-sm-block btn-container">
-                                                    <a rel="noreferrer" href="https://wa.me/+989377974625"
-                                                       class="btn btn-primary shadow btn--jump is-active text-dark"
-                                                       target="_blank">Whatsapp<i
-                                                            class="fa fa-whatsapp text-dark"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 font-weight-bold align-content-end h6">اطرح السؤال
-                                                مجانًا من طبيب متخصص
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="btn-box">
-                                                    <a rel="noreferrer" href="https://wa.me/+989377974625"
-                                                       class="btn btn-primary shadow shadow btn--jump is-active text-dark"
-                                                       target="_blank">Whatsapp<i class="fa fa-whatsapp text-dark"></i></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <h3>250+ Medical Tips We Just Had to Share</h3>
+
+                            <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quia non numquam eius modi tempora incidunt ut labore et dolore magnam
+                                dolor sit amet, consectetur adipisicing.</p>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in sed quia non numquam
+                                eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+
+                            <blockquote class="wp-block-quote">
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+
+                                <cite>Tom Cruise</cite>
+                            </blockquote>
+
+                            <p>Quuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quia non numquam eius modi tempora incidunt ut labore et dolore magnam
+                                dolor sit amet, consectetur adipisicing.</p>
+
+                            <ul class="wp-block-gallery columns-3">
+                                <li class="blocks-gallery-item">
+                                    <figure>
+                                        <img src="assets/img/blog/9.jpg" alt="image">
+                                    </figure>
+                                </li>
+
+                                <li class="blocks-gallery-item">
+                                    <figure>
+                                        <img src="assets/img/blog/8.jpg" alt="image">
+                                    </figure>
+                                </li>
+
+                                <li class="blocks-gallery-item">
+                                    <figure>
+                                        <img src="assets/img/blog/7.jpg" alt="image">
+                                    </figure>
+                                </li>
+                            </ul>
+
+                            <h3>Four major elements that we offer:</h3>
+
+                            <ul class="features-list">
+                                <li><i class="flaticon-check-mark"></i> Scientific Skills For getting a better result</li>
+                                <li><i class="flaticon-check-mark"></i> Communication Skills to getting in touch</li>
+                                <li><i class="flaticon-check-mark"></i> A Career Overview opportunity Available</li>
+                                <li><i class="flaticon-check-mark"></i> A good Work Environment For work</li>
+                            </ul>
+
+                            <h3>Setting the mood with incense</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in sed quia non numquam
+                                eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+
+                            <h3>A cleansing hot shower or bath</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                quis nostrud.</p>
+                        </div>
+
+                        <div class="article-footer">
+                            <div class="article-tags">
+                                <span><i class="fas fa-bookmark"></i></span>
+
+                                <a href="#">Fashion</a>,
+                                <a href="#">Games</a>,
+                                <a href="#">Travel</a>
                             </div>
 
-                            <div class="article-footer">
-                                <div class="article-tags">
-                                    <span><i class="fas fa-bookmark"></i></span>
+                            <div class="article-share">
+                                <ul class="social">
+                                    <li><span>Share:</span></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
 
-                                    {% for category in article.categories.all %}
-                                        <a href="{{ category.get_absolute_url }}"> {{ category }} <span>,</span></a>
-                                    {% endfor %}
+                        <div class="post-navigation">
+                            <div class="navigation-links">
+                                <div class="nav-previous">
+                                    <a href="#"><i class="flaticon-left-arrow"></i> Prev Post</a>
                                 </div>
 
-                                <div class="article-share">
-                                    <ul class="social">
-                                        <li><span>شارك:</span></li>
-                                        <li>
-                                            <a rel="noreferrer"
-                                               href="https://twitter.com/intent/tweet?url=https://ceritamed.com{{ request.get_full_path }}"
-                                               target="_blank"><i class="fab fa-twitter pt-2"></i></a></li>
-                                        <li>
-                                            <a rel="noreferrer"
-                                               href="https://t.me/share/url?url=https://ceritamed.com{{ request.get_full_path }}"
-                                               target="_blank"><i class="fab fa-telegram pt-2"></i></a></li>
-                                        <li>
-                                            <a rel="noreferrer"
-                                               href="https://www.facebook.com/sharer/sharer.php?u=https://ceritamed.com{{ request.get_full_path }}"
-                                               target="_blank"><i class="fab fa-facebook-f pt-2"></i></a></li>
-                                        <li>
-                                            <a rel="noreferrer"
-                                               href="https://wa.me/?text=https://ceritamed.com{{ request.get_full_path }}"
-                                               target="_blank"><i class="fab fa-whatsapp pt-2"></i></a></li>
-                                    </ul>
+                                <div class="nav-next">
+                                    <a href="#">Next Post <i class="flaticon-arrow-pointing-to-right"></i></a>
                                 </div>
                             </div>
                         </div>
-                        <hr/>
-                        <section class="doctor-areaa comments-area m-1  bg-fefefe">
-                            <h3 class=" comments-title  mb-1  pr-0">أطباء ذات صلة:</h3>
-                            <div class="container">
-
-                                <div class="doctor-slides owl-carousel owl-theme">
-
-                                    {% for doctor in doctors %}
-
-                                        <div class="single-doctor-box shadow">
-                                            <div class="doctor-image">
-                                                <img src="{{ doctor.img_thumbnail_small.url }}"
-                                                     alt="{{ doctor.doctor_name }}">
-
-                                                <a href="{{ doctor.get_absolute_url }}" class="details-btn"><i
-                                                        class="fas fa-plus "></i></a>
-                                            </div>
-
-                                            <div class="doctor-content">
-                                                <h3><a href="{{ doctor.get_absolute_url }}">
-                                                    دکتر {{ doctor.doctor_name }}</a></h3>
-                                                <span> {{ doctor.doctor_evidence }} {{ doctor.doctor_expertise }}</span>
-
-                                            </div>
-                                        </div>
-
-                                    {% endfor %}
-
-                                </div>
-                            </div>
-                        </section>
-
 
                         <div class="comments-area">
-                            <h3 class="comments-title">الآراء:</h3>
+                            <h3 class="comments-title">2 Comments:</h3>
 
                             <ol class="comment-list">
                                 <li class="comment">
-                                    {% for comment in comments %}
-                                        <article class="comment-body pr-3">
-                                            <footer class="comment-meta">
-                                                <div class="comment-author vcard">
-                                                    <b class="fn">{{ comment.name }}</b>
-                                                    <span class="says">می گوید:</span>
-                                                </div>
-
-                                                <div class="comment-metadata">
-                                                    <a>
-                                                        <time>{{ comment.created }}</time>
-                                                    </a>
-                                                </div>
-                                            </footer>
-
-                                            <div class="comment-content">
-                                                <p>{{ comment.text | linebreaks }}</p>
+                                    <article class="comment-body">
+                                        <footer class="comment-meta">
+                                            <div class="comment-author vcard">
+                                                <img src="assets/img/author1.jpg" class="avatar" alt="image">
+                                                <b class="fn">John Jones</b>
+                                                <span class="says">says:</span>
                                             </div>
 
-                                        </article>
-                                    {% endfor %}
+                                            <div class="comment-metadata">
+                                                <a href="#">
+                                                    <time>April 24, 2021 at 10:59 am</time>
+                                                </a>
+                                            </div>
+                                        </footer>
+
+                                        <div class="comment-content">
+                                            <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                                                scrambled it to make a type specimen book.</p>
+                                        </div>
+
+                                        <div class="reply">
+                                            <a href="#" class="comment-reply-link">Reply</a>
+                                        </div>
+                                    </article>
+
+                                    <ol class="children">
+                                        <li class="comment">
+                                            <article class="comment-body">
+                                                <footer class="comment-meta">
+                                                    <div class="comment-author vcard">
+                                                        <img src="assets/img/author2.jpg" class="avatar" alt="image">
+                                                        <b class="fn">Steven Smith</b>
+                                                        <span class="says">says:</span>
+                                                    </div>
+
+                                                    <div class="comment-metadata">
+                                                        <a href="#">
+                                                            <time>April 24, 2021 at 10:59 am</time>
+                                                        </a>
+                                                    </div>
+                                                </footer>
+
+                                                <div class="comment-content">
+                                                    <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                                        and scrambled it to make a type specimen book.</p>
+                                                </div>
+
+                                                <div class="reply">
+                                                    <a href="#" class="comment-reply-link">Reply</a>
+                                                </div>
+                                            </article>
+                                        </li>
+
+                                        <ol class="children">
+                                            <li class="comment">
+                                                <article class="comment-body">
+                                                    <footer class="comment-meta">
+                                                        <div class="comment-author vcard">
+                                                            <img src="assets/img/author3.jpg" class="avatar" alt="image">
+                                                            <b class="fn">Sarah Taylor</b>
+                                                            <span class="says">says:</span>
+                                                        </div>
+
+                                                        <div class="comment-metadata">
+                                                            <a href="#">
+                                                                <time>April 24, 2021 at 10:59 am</time>
+                                                            </a>
+                                                        </div>
+                                                    </footer>
+
+                                                    <div class="comment-content">
+                                                        <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of
+                                                            type and scrambled it to make a type specimen book.</p>
+                                                    </div>
+
+                                                    <div class="reply">
+                                                        <a href="#" class="comment-reply-link">Reply</a>
+                                                    </div>
+                                                </article>
+                                            </li>
+                                        </ol>
+                                    </ol>
                                 </li>
 
+                                <li class="comment">
+                                    <article class="comment-body">
+                                        <footer class="comment-meta">
+                                            <div class="comment-author vcard">
+                                                <img src="assets/img/author2.jpg" class="avatar" alt="image">
+                                                <b class="fn">John Doe</b>
+                                                <span class="says">says:</span>
+                                            </div>
 
+                                            <div class="comment-metadata">
+                                                <a href="#">
+                                                    <time>April 24, 2021 at 10:59 am</time>
+                                                </a>
+                                            </div>
+                                        </footer>
+
+                                        <div class="comment-content">
+                                            <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+                                                scrambled it to make a type specimen book.</p>
+                                        </div>
+
+                                        <div class="reply">
+                                            <a href="#" class="comment-reply-link">Reply</a>
+                                        </div>
+                                    </article>
+
+                                    <ol class="children">
+                                        <li class="comment">
+                                            <article class="comment-body">
+                                                <footer class="comment-meta">
+                                                    <div class="comment-author vcard">
+                                                        <img src="assets/img/author4.jpg" class="avatar" alt="image">
+                                                        <b class="fn">James Anderson</b>
+                                                        <span class="says">says:</span>
+                                                    </div>
+
+                                                    <div class="comment-metadata">
+                                                        <a href="#">
+                                                            <time>April 24, 2021 at 10:59 am</time>
+                                                        </a>
+                                                    </div>
+                                                </footer>
+
+                                                <div class="comment-content">
+                                                    <p>Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                                                        and scrambled it to make a type specimen book.</p>
+                                                </div>
+
+                                                <div class="reply">
+                                                    <a href="#" class="comment-reply-link">Reply</a>
+                                                </div>
+                                            </article>
+                                        </li>
+                                    </ol>
+                                </li>
                             </ol>
 
                             <div class="comment-respond">
-                                <h3 class="comment-reply-title">اكتبوا آرائكم</h3>
+                                <h3 class="comment-reply-title">Leave a Reply</h3>
 
-                                <form class="comment-form" method="post">
-                                    {% csrf_token %}
-
-                                    {% if messages %}
-                                        {% for message in messages %}
-                                            {% if "comment" in message.tags %}
-                                                <div class="alert alert-success mt-3">
-                                                    <p> {{ message }} </p>
-                                                </div>
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% endif %}
-
+                                <form class="comment-form">
                                     <p class="comment-notes">
-                                        <span id="email-notes"></span>لن يتم نشر بريدك الإلكتروني.تم وضع علامة على
-                                        الأجزاء المطلوبة<span class="required">*</span>
+                                        <span id="email-notes">Your email address will not be published.</span>
+                                        Required fields are marked
+                                        <span class="required">*</span>
                                     </p>
                                     <p class="comment-form-comment">
-                                        <label>رأيك</label>
-                                        {{ created_comment.text }}
-                                    <div class="help-block with-errors">
-                                        {% for errors in created_comment.text.errors %}
-                                            <p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}
-                                    </div>
+                                        <label>Comment</label>
+                                        <textarea name="comment" id="comment" cols="45" rows="5" maxlength="65525" required="required"></textarea>
                                     </p>
                                     <p class="comment-form-author">
-                                        <label>إسمك<span class="required">*</span></label>
-                                        {{ created_comment.name }}
-                                    <div class="help-block with-errors">{% for errors in created_comment.name.errors %}
-                                        <p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}</div>
-
+                                        <label>Name <span class="required">*</span></label>
+                                        <input type="text" id="author" name="author" required="required">
                                     </p>
                                     <p class="comment-form-email">
-                                        <label>البريد الألكتروني<span class="required">*</span></label>
-                                        {{ created_comment.email }}
-                                    <div class="help-block with-errors">{% for errors in created_comment.email.errors %}
-                                        <p class="fa-pull-right text-danger">{{ errors }}</p>{% endfor %}</div>
+                                        <label>Email <span class="required">*</span></label>
+                                        <input type="email" id="email" name="email" required="required">
+                                    </p>
+                                    <p class="comment-form-url">
+                                        <label>Website</label>
+                                        <input type="url" id="url" name="url">
+                                    </p>
+                                    <p class="comment-form-cookies-consent">
+                                        <input type="checkbox" value="yes" name="wp-comment-cookies-consent" id="wp-comment-cookies-consent">
+                                        <label for="wp-comment-cookies-consent">Save my name, email, and website in this browser for the next time I comment.</label>
                                     </p>
                                     <p class="form-submit">
-                                        <input type="submit" name="submit-comment" id="submit" class="submit"
-                                               value="إرسال">
+                                        <input type="submit" name="submit" id="submit" class="submit" value="Post Comment">
                                     </p>
-
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {% include 'blog/sidebar.html' %}
+                <div class="col-lg-4 col-md-12">
+                    <aside class="widget-area" id="secondary">
+                        <section class="widget widget_search">
+                            <form class="search-form">
+                                <label>
+                                    <span class="screen-reader-text">Search for:</span>
+                                    <input type="search" class="search-field" placeholder="Search...">
+                                </label>
+                                <button type="submit"><i class="fas fa-search"></i></button>
+                            </form>
+                        </section>
+
+                        <section class="widget widget_fovia_posts_thumb">
+                            <h3 class="widget-title">Popular Posts</h3>
+
+                            <article class="item">
+                                <a href="#" class="thumb">
+                                    <span class="fullimage cover bg1" role="img"></span>
+                                </a>
+                                <div class="info">
+                                    <time datetime="2021-06-30">June 30, 2021</time>
+                                    <h4 class="title usmall"><a href="#">How to change yourself for the better</a></h4>
+                                </div>
+
+                                <div class="clear"></div>
+                            </article>
+
+                            <article class="item">
+                                <a href="#" class="thumb">
+                                    <span class="fullimage cover bg2" role="img"></span>
+                                </a>
+                                <div class="info">
+                                    <time datetime="2021-06-30">June 30, 2021</time>
+                                    <h4 class="title usmall"><a href="#">10 Tactics for marketing your company</a></h4>
+                                </div>
+
+                                <div class="clear"></div>
+                            </article>
+
+                            <article class="item">
+                                <a href="#" class="thumb">
+                                    <span class="fullimage cover bg3" role="img"></span>
+                                </a>
+                                <div class="info">
+                                    <time datetime="2021-06-30">June 30, 2021</time>
+                                    <h4 class="title usmall"><a href="#">Google web ranking changing much</a></h4>
+                                </div>
+
+                                <div class="clear"></div>
+                            </article>
+                        </section>
+
+                        <section class="widget widget_recent_comments">
+                            <h3 class="widget-title">Recent Comments</h3>
+
+                            <ul>
+                                <li>
+                                        <span class="comment-author-link">
+                                            <a href="#">A WordPress Commenter</a>
+                                        </span>
+                                    on
+                                    <a href="#">Hello world!</a>
+                                </li>
+                                <li>
+                                        <span class="comment-author-link">
+                                            <a href="#">Fovia</a>
+                                        </span>
+                                    on
+                                    <a href="#">Hello world!</a>
+                                </li>
+                                <li>
+                                        <span class="comment-author-link">
+                                            <a href="#">Wordpress</a>
+                                        </span>
+                                    on
+                                    <a href="#">Hello world!</a>
+                                </li>
+                                <li>
+                                        <span class="comment-author-link">
+                                            <a href="#">A WordPress Commenter</a>
+                                        </span>
+                                    on
+                                    <a href="#">Hello world!</a>
+                                </li>
+                                <li>
+                                        <span class="comment-author-link">
+                                            <a href="#">Fovia</a>
+                                        </span>
+                                    on
+                                    <a href="#">Hello world!</a>
+                                </li>
+                            </ul>
+                        </section>
+
+                        <section class="widget widget_archive">
+                            <h3 class="widget-title">Archives</h3>
+
+                            <ul>
+                                <li><a href="#">May 2021</a></li>
+                                <li><a href="#">April 2021</a></li>
+                                <li><a href="#">June 2021</a></li>
+                            </ul>
+                        </section>
+
+                        <section class="widget widget_categories">
+                            <h3 class="widget-title">Categories</h3>
+
+                            <ul>
+                                <li><a href="#">Business</a></li>
+                                <li><a href="#">Privacy</a></li>
+                                <li><a href="#">Technology</a></li>
+                                <li><a href="#">Tips</a></li>
+                                <li><a href="#">Uncategorized</a></li>
+                            </ul>
+                        </section>
+
+                        <section class="widget widget_meta">
+                            <h3 class="widget-title">Meta</h3>
+
+                            <ul>
+                                <li><a href="#">Log in</a></li>
+                                <li><a href="#">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+                                <li><a href="#">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+                                <li><a href="#">WordPress.org</a></li>
+                            </ul>
+                        </section>
+
+                        <section class="widget widget_tag_cloud">
+                            <h3 class="widget-title">Tags</h3>
+
+                            <div class="tagcloud">
+                                <a href="#">Business <span class="tag-link-count"> (3)</span></a>
+                                <a href="#">Design <span class="tag-link-count"> (3)</span></a>
+                                <a href="#">IT <span class="tag-link-count"> (2)</span></a>
+                                <a href="#">Marketing <span class="tag-link-count"> (2)</span></a>
+                                <a href="#">Mobile <span class="tag-link-count"> (1)</span></a>
+                                <a href="#">Protect <span class="tag-link-count"> (1)</span></a>
+                                <a href="#">Startup <span class="tag-link-count"> (1)</span></a>
+                                <a href="#">Tips <span class="tag-link-count"> (2)</span></a>
+                            </div>
+                        </section>
+                    </aside>
+                </div>
             </div>
         </div>
     </section>
+    <!-- End Blog Details Area -->
 {% endblock %}
