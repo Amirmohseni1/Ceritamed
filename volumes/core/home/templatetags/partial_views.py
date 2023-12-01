@@ -9,25 +9,22 @@ register = template.Library()
 
 @register.inclusion_tag('share/footer.html', takes_context=True)
 def footer(context):
-    request = context['request']
-    blog_data = Article.objects.all()
-    service_data = Service.objects.all()
-    service_category_data = ServiceCategory.objects.all()
-
-    news_letter_form = NewsLettersForm(request.POST or None)
-    if news_letter_form.is_valid():
-        email = news_letter_form.cleaned_data.get('email')
-        Newsletters.objects.create(email=email)
-        news_letter_form: NewsLettersForm = NewsLettersForm()
-
+    setting = context['setting']
+    socials = context['socials']
+    articles = Article.custom_objects.get_active_list()[:6]
+    # todo= add services and doctor for footer
     return {
-        'Articles': blog_data,
-        'Servise': service_data,
-        'ServiseCategory': service_category_data,
-        'Forms': news_letter_form,
+        'articles': articles,
+        'setting': setting,
+        'socials': socials,
     }
 
 
 @register.inclusion_tag('share/header.html', takes_context=True)
 def header(context):
-    return {}
+    setting = context['setting']
+    socials = context['socials']
+    return {
+        'setting': setting,
+        'socials': socials,
+    }

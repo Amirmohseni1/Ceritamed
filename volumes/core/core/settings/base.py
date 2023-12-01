@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 from decouple import config
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
 
@@ -63,7 +62,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.request',
                 # custom context processors
-                'settings.views.setting',
+                'settings.context_processors.setting',
+                'settings.context_processors.social',
             ],
         },
     },
