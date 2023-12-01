@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 from contact.forms import ContactUsModelForms
 from doctors.models import Doctor
 from services.models import ServiceCategory
+from Articles.models import Article
 from settings.models import Slider, FeedBack, PartnerCompany
 
 
@@ -11,6 +12,7 @@ class Index(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
+        context['articles'] = Article.custom_objects.get_active_list()[:3]
         context['sliders'] = Slider.objects.all()
         context['partners'] = PartnerCompany.objects.all()
         context['doctors'] = Doctor.objects.all()
