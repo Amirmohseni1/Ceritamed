@@ -1,7 +1,8 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from .managers import SliderManger, SocialManger, PartnerCompanyManger, FeedBackManger
+
 from libs.db.models import AuditableModel, SeoModel, StatusModel
+from .managers import SliderManger, SocialManger, PartnerCompanyManger, FeedBackManger
 
 
 class Setting(models.Model):
@@ -25,24 +26,24 @@ class Slider(AuditableModel, StatusModel):
     image = models.ImageField(verbose_name=_('Slider'), upload_to='setting/slider', null=True)
     url = models.URLField(verbose_name=_('Link'), blank=True, null=True)
     body = models.TextField(verbose_name=_('Body'))
-    order = models.PositiveSmallIntegerField(verbose_name=_('Order'), default=0)
+    rank = models.PositiveSmallIntegerField(verbose_name=_('Rank'), default=1)
 
     objects = models.Manager()
     custom_objects = SliderManger()
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-        sliders = Slider.objects.all()
-        for slider in sliders:
-            if slider.order >= self.order:
-                slider.order += 1
-        return super().save(force_insert=False, force_update=False, using=None, update_fields=None)
+        objects = Slider.objects.all().count()
+        if self.rank > objects:
+            self.rank = objects + 1
+        return super(Slider, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
 
     def delete(self, using=None, keep_parents=False):
-        sliders = Slider.objects.all()
-        for slider in sliders:
-            if slider.order >= self.order:
-                slider.order -= 1
-        return super().delete(using=None, keep_parents=False)
+        objects = Slider.objects.all()
+        for object in objects:
+            if object.rank > self.rank:
+                object.rank -= 1
+                object.save()
+        return super(Slider, self).delete(using=None, keep_parents=False)
 
     class Meta:
         verbose_name = _('Slider')
@@ -52,24 +53,24 @@ class Slider(AuditableModel, StatusModel):
 class PartnerCompany(AuditableModel, StatusModel):
     image = models.FileField(verbose_name=_('Image'), upload_to='setting/partner-company', null=True)
     url = models.URLField(verbose_name=_('URL'), null=True, blank=True)
-    order = models.PositiveSmallIntegerField(verbose_name=_('Order'), default=0)
+    rank = models.PositiveSmallIntegerField(verbose_name=_('Rank'), default=1)
 
     objects = models.Manager()
     custom_objects = PartnerCompanyManger()
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-        partners = PartnerCompany.objects.all()
-        for partner in partners:
-            if partner.order >= self.order:
-                partner.order += 1
-        return super().save(force_insert=False, force_update=False, using=None, update_fields=None)
+        objects = PartnerCompany.objects.all().count()
+        if self.rank > objects:
+            self.rank = objects + 1
+        return super(PartnerCompany, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
 
     def delete(self, using=None, keep_parents=False):
-        partners = Slider.objects.all()
-        for partner in partners:
-            if partner.order >= self.order:
-                partner.order -= 1
-        return super().delete(using=None, keep_parents=False)
+        objects = PartnerCompany.objects.all()
+        for object in objects:
+            if object.rank > self.rank:
+                object.rank -= 1
+                object.save()
+        return super(PartnerCompany, self).delete(using=None, keep_parents=False)
 
     class Meta:
         verbose_name = _('Partner Company')
@@ -80,24 +81,24 @@ class FeedBack(AuditableModel, StatusModel):
     disease = models.CharField(verbose_name=_('disease'), max_length=50)
     image = models.ImageField(verbose_name=_('Image'), upload_to='setting/customers', null=True)
     body = models.TextField(verbose_name=_('Body'))
-    order = models.PositiveSmallIntegerField(verbose_name=_('Order'), default=0)
+    rank = models.PositiveSmallIntegerField(verbose_name=_('Rank'), default=1)
 
     objects = models.Manager()
     custom_objects = FeedBackManger()
 
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-        feeds = FeedBack.objects.all()
-        for feed in feeds:
-            if feed.order >= self.order:
-                feed.order += 1
-        return super().save(force_insert=False, force_update=False, using=None, update_fields=None)
+        objects = FeedBack.objects.all().count()
+        if self.rank > objects:
+            self.rank = objects + 1
+        return super(FeedBack, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
 
     def delete(self, using=None, keep_parents=False):
-        feeds = Slider.objects.all()
-        for feed in feeds:
-            if feed.order >= self.order:
-                feed.order -= 1
-        return super().delete(using=None, keep_parents=False)
+        objects = FeedBack.objects.all()
+        for object in objects:
+            if object.rank > self.rank:
+                object.rank -= 1
+                object.save()
+        return super(FeedBack, self).delete(using=None, keep_parents=False)
 
     class Meta:
         verbose_name = _('FeedBack')
@@ -107,9 +108,24 @@ class FeedBack(AuditableModel, StatusModel):
 class Social(AuditableModel, StatusModel):
     url = models.URLField(verbose_name=_('Link'))
     icon = models.CharField(verbose_name=_('Icon'), max_length=20)
+    rank = models.PositiveSmallIntegerField(verbose_name=_('Rank'), default=1)
 
     objects = models.Manager()
     custom_objects = SocialManger()
+
+    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
+        objects = Social.objects.all().count()
+        if self.rank > objects:
+            self.rank = objects + 1
+        return super(Social, self).save(force_insert=False, force_update=False, using=None, update_fields=None)
+
+    def delete(self, using=None, keep_parents=False):
+        objects = Social.objects.all()
+        for object in objects:
+            if object.rank > self.rank:
+                object.rank -= 1
+                object.save()
+        return super(Social, self).delete(using=None, keep_parents=False)
 
     class Meta:
         verbose_name = _('Social')

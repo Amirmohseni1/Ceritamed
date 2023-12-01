@@ -17,19 +17,95 @@ class SettingAdmin(admin.ModelAdmin):
 
 @admin.register(Slider)
 class SliderAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'rank')
+    list_editable = ('rank',)
+    ordering = ('rank',)
+
+    def save_model(self, request, obj, form, change):
+        objects = Slider.objects.all()
+        for object in objects:
+            if object.rank >= obj.rank and not change:
+                object.rank = object.rank + 1
+                object.save()
+        if change:
+            obj_count_before = Slider.objects.get(id=obj.id)
+            for object in objects:
+                if object.rank > obj_count_before.rank:
+                    object.rank -= 1
+                    object.save()
+                    if object.rank >= obj.rank:
+                        object.rank += 1
+                        object.save()
+        return super().save_model(request, obj, form, change)
 
 
 @admin.register(PartnerCompany)
 class PartnerCompanyAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'rank')
+    list_editable = ('rank',)
+    ordering = ('rank',)
+
+    def save_model(self, request, obj, form, change):
+        objects = PartnerCompany.objects.all()
+        for object in objects:
+            if object.rank >= obj.rank and not change:
+                object.rank = object.rank + 1
+                object.save()
+        if change:
+            obj_count_before = PartnerCompany.objects.get(id=obj.id)
+            for object in objects:
+                if object.rank > obj_count_before.rank:
+                    object.rank -= 1
+                    object.save()
+                    if object.rank >= obj.rank:
+                        object.rank += 1
+                        object.save()
+        return super().save_model(request, obj, form, change)
 
 
 @admin.register(FeedBack)
 class FeedBackAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'rank')
+    list_editable = ('rank',)
+    ordering = ('rank',)
+
+    def save_model(self, request, obj, form, change):
+        objects = FeedBack.objects.all()
+        for object in objects:
+            if object.rank >= obj.rank and not change:
+                object.rank = object.rank + 1
+                object.save()
+        if change:
+            obj_count_before = FeedBack.objects.get(id=obj.id)
+            for object in objects:
+                if object.rank > obj_count_before.rank:
+                    object.rank -= 1
+                    object.save()
+                    if object.rank >= obj.rank:
+                        object.rank += 1
+                        object.save()
+        return super().save_model(request, obj, form, change)
 
 
 @admin.register(Social)
 class SocialAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('title', 'rank')
+    list_editable = ('rank',)
+    ordering = ('rank',)
+
+    def save_model(self, request, obj, form, change):
+        objects = Social.objects.all()
+        for object in objects:
+            if object.rank >= obj.rank and not change:
+                object.rank = object.rank + 1
+                object.save()
+        if change:
+            obj_count_before = Social.objects.get(id=obj.id)
+            for object in objects:
+                if object.rank > obj_count_before.rank:
+                    object.rank -= 1
+                    object.save()
+                    if object.rank >= obj.rank:
+                        object.rank += 1
+                        object.save()
+        return super().save_model(request, obj, form, change)
