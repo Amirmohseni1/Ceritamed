@@ -9,6 +9,7 @@ class ArticleAdmin(admin.ModelAdmin):
     list_filter = ('is_active', 'modified_at', 'created_at')
     search_fields = ('title', 'slug', 'body')
     ordering = ['-created_at']
+    prepopulated_fields = {'slug': ('title',), }
 
 
 @admin.register(ArticleCategory)
@@ -18,6 +19,8 @@ class ArticleCategoryAdmin(admin.ModelAdmin):
     list_filter = ('created_at', 'is_active')
     date_hierarchy = 'created_at'
     ordering = ['-created_at']
+    prepopulated_fields = {'slug': ('title',), }
+
 
 
 @admin.register(ArticleComment)
@@ -30,3 +33,5 @@ class ArticleCommentAdmin(admin.ModelAdmin):
 class ArticleTagAdmin(admin.ModelAdmin):
     list_display = ('title',)
     search_fields = ('title',)
+    prepopulated_fields = {'slug': ('title',), }
+
