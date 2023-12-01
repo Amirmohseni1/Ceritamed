@@ -13,8 +13,8 @@ class Index(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['articles'] = Article.custom_objects.get_active_list()[:3]
+        context['partners'] = PartnerCompany.custom_objects.all()
         context['sliders'] = Slider.objects.all()
-        context['partners'] = PartnerCompany.objects.all()
         context['doctors'] = Doctor.objects.all()
         context['services'] = ServiceCategory.objects.all()
         context['customers'] = FeedBack.objects.all()

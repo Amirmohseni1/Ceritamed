@@ -805,61 +805,16 @@
             </div>
 
             <div class="customers-partner-list">
-                <div class="partner-item">
-                    <a href="#">
-                        <img src="/static/img/partner/1.png" alt="image">
-                    </a>
-                </div>
-
-                <div class="partner-item">
-                    <a href="#">
-                        <img src="/static/img/partner/2.png" alt="image">
-                    </a>
-                </div>
-
-                <div class="partner-item">
-                    <a href="#">
-                        <img src="/static/img/partner/3.png" alt="image">
-                    </a>
-                </div>
-
-                <div class="partner-item">
-                    <a href="#">
-                        <img src="/static/img/partner/4.png" alt="image">
-                    </a>
-                </div>
-
-                <div class="partner-item">
-                    <a href="#">
-                        <img src="/static/img/partner/5.png" alt="image">
-                    </a>
-                </div>
-
-                <div class="partner-item">
-                    <a href="#">
-                        <img src="/static/img/partner/6.png" alt="image">
-                    </a>
-                </div>
-
-                <div class="partner-item">
-                    <a href="#">
-                        <img src="/static/img/partner/7.png" alt="image">
-                    </a>
-                </div>
-
-                <div class="partner-item">
-                    <a href="#">
-                        <img src="/static/img/partner/8.png" alt="image">
-                    </a>
-                </div>
-
-                <div class="partner-item">
-                    <a href="#">
-                        <img src="/static/img/partner/9.png" alt="image">
-                    </a>
-                </div>
+                {% for partner in partners %}
+                    <div class="partner-item">
+                        <a href="{{ partner.url }}">
+                            {% thumbnail partner.image '165x82' format='PNG' quality=95 as im %}
+                                <img src="{{ im.url }}" alt="image">
+                            {% endthumbnail %}
+                        </a>
+                    </div>
+                {% endfor %}
             </div>
-        </div>
     </section>
     <!-- End Partner Area -->
 
@@ -877,7 +832,7 @@
                     <div class="col-lg-4 col-md-6">
                         <div class="single-blog-post">
                             <div class="post-image">
-                                {% thumbnail article.image '356x251' format='JPEG' quality=90 as im%}
+                                {% thumbnail article.image '356x251' format='JPEG' quality=90 as im %}
                                     <a href="{{ article.get_absolute_url }}"><img src="{{ im.url }}" alt="{{ article.title }}"></a>
                                 {% endthumbnail %}
                             </div>
